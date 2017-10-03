@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class FileHelper {
     public static List<Website> parseFile(String filename) {
         List<Website> sites = new ArrayList<Website>();
-        String url = null, title = null;
+        String url = null;
+        String title = null;
         List<String> listOfWords = null;
 
         try {

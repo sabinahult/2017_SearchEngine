@@ -13,12 +13,20 @@ public class SearchEngine {
         System.out.println("Please provide a query word");
         while (sc.hasNext()) {
             String line = sc.nextLine();
+            boolean found = false;//Assignment 2
             // Go through all websites and check if word is present
             for (Website w: sites) {
                 if (w.containsWord(line)) {
+                    found = true;//Assignment 2
                     System.out.println("Query is found on '" + w.getUrl() +"'");
                 }
             }
+
+            if(!found) {
+                System.out.println("No website contains " + line+ ".");//Assignment 2
+            }
+
+            //System.out.println(sites.toString());
             System.out.println("Please provide the next query word");
         }
     }
