@@ -1,6 +1,10 @@
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Authors: Group M: Line, Lisa, Susan and Sabina
+ */
+
 public class SearchEngine {
     public static void main(String[] args) {
         System.out.println("Welcome to the SearchEngine!");
@@ -8,25 +12,32 @@ public class SearchEngine {
             System.out.println("Error: Filename is missing");
             return;
         }
+
         Scanner sc = new Scanner(System.in);
         List<Website> sites = FileHelper.parseFile(args[0]);
+        List<Website> foundSites;
+
+        //Debugging to see contents of websites array after it's created from reading the file
+        //System.out.println(sites.toString());
+
         System.out.println("Please provide a query word");
+
         while (sc.hasNext()) {
             String line = sc.nextLine();
-            boolean found = false;//Assignment 2
-            // Go through all websites and check if word is present
-            for (Website w: sites) {
-                if (w.containsWord(line)) {
-                    found = true;//Assignment 2
-                    System.out.println("Query is found on '" + w.getUrl() +"'");
-                }
+
+            SimpleIndex simple = new SimpleIndex();
+            simple.build(sites);
+            foundSites = simple.lookup(line);
+
+            if(foundSites.isEmpty()) {
+                System.out.println("No website contains " + line + "." ); //Assignment 2
             }
 
-            if(!found) {
-                System.out.println("No website contains " + line+ ".");//Assignment 2
+            else {
+                for(Website w : foundSites)
+                System.out.println("Query is found on '" + w.getUrl() + "'");
             }
 
-            //System.out.println(sites.toString());
             System.out.println("Please provide the next query word");
         }
     }
