@@ -13,7 +13,7 @@ public class Website {
 
     /**
      * Constructor for a website object.
-     * @param url 
+     * @param url
      * @param title
      * @param words
      */
