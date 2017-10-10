@@ -17,10 +17,11 @@ public class SearchEngine {
         List<Website> sites = FileHelper.parseFile(args[0]);
         List<Website> foundSites;
 
-        TinyTimer timer = new TinyTimer();
-
         //Debugging to see contents of websites array after it's created from reading the file
         //System.out.println(sites.toString());
+
+        Index index = new InvertedIndex();
+        index.build(sites);
 
         System.out.println("Please provide a query word");
 
@@ -28,17 +29,7 @@ public class SearchEngine {
         while (sc.hasNext()) {
             String line = sc.nextLine();
 
-            timer.start();
-
-            //SIMPLE INDEX - Comment out if using inverted index
-            //SimpleIndex index = new SimpleIndex();
-            //index.build(sites);
-
-            //INVERTED INDEX - Comment out if using simple index
-            InvertedIndex index = new InvertedIndex();
-            index.build(sites);
-
-            foundSites = index.lookup(line);
+           foundSites = index.lookup(line);
 
             if(foundSites.isEmpty()) {
                 System.out.println("No website contains " + line + "." ); //Assignment 2
@@ -48,9 +39,6 @@ public class SearchEngine {
                 for(Website w : foundSites)
                 System.out.println("Query is found on '" + w.getUrl() + "'");
             }
-
-            timer.end();
-            timer.printDuration();
 
             System.out.println("Please provide the next query word");
         }

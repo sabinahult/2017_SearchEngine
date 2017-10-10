@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina.
- * A website is the basic entity of the search engine.
+ * A website is the basic  entity of the search engine.
  */
 
 public class Website {

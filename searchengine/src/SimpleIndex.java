@@ -12,8 +12,10 @@ public class SimpleIndex implements Index {
 
     @Override
     public void build(List<Website> listOfWebsites) {
-        websites = new ArrayList<>(listOfWebsites);
+        //websites = new ArrayList<>(listOfWebsites);// creates list everytime instead of assigning directly- below improved
+        websites = listOfWebsites; // update the website we already created
         relevantSites = new ArrayList<>();
+
     }
 
     @Override
