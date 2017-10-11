@@ -33,9 +33,7 @@ public class SearchEngine {
 
             if(foundSites.isEmpty()) {
                 System.out.println("No website contains " + line + "." ); //Assignment 2
-            }
-
-            else {
+            } else {
                 for(Website w : foundSites)
                 System.out.println("Query is found on '" + w.getUrl() + "'");
             }

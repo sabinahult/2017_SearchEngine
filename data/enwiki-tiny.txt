@@ -1,7 +1,4 @@
-﻿*PAGE:haha.com
-Haha!
-*PAGE:
-*PAGE:https://en.wikipedia.org/wiki/United_States
+﻿*PAGE:https://en.wikipedia.org/wiki/United_States
 United States
 the
 united
@@ -630,5 +627,3 @@ i
 københavn
 in
 danish
-*PAGE:Faulty page
-Faulty page
