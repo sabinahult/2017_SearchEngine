@@ -3,7 +3,7 @@ import java.util.List;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina.
- * A website is the basic  entity of the search engine.
+ * A website is the basic entity of the search engine.
  */
 
 public class Website {
@@ -25,7 +25,7 @@ public class Website {
     }
 
     /**
-     * Returns the title of the website
+     * Returns the title of this website
      * @return title
      */
     public String getTitle() {
@@ -33,7 +33,7 @@ public class Website {
     }
 
     /**
-     * Returns the url of the website
+     * Returns the url of this website
      * @return url
      */
     public String getUrl() {
