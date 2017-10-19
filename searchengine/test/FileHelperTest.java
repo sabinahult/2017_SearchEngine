@@ -15,6 +15,7 @@ class FileHelperTest {
 
     }
 
+    @Test
     void parseBadFile() {
 //        List<Website> sites = FileHelper.parseFile("test-resources/test-file-with-errors.txt");
 //        assertEquals(2, sites.size());

@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina
+ * The overall function of the search engine is to look through websites and return the
+ * relevant websites given the query word or words.
  */
 
 public class SearchEngine {
@@ -32,7 +34,7 @@ public class SearchEngine {
            foundSites = index.lookup(line);
 
             if(foundSites.isEmpty()) {
-                System.out.println("No website contains " + line + "." ); //Assignment 2
+                System.out.println("No website contains " + line); //Assignment 2
             } else {
                 for(Website w : foundSites)
                 System.out.println("Query is found on '" + w.getUrl() + "'");

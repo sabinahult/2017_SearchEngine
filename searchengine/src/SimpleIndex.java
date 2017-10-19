@@ -8,10 +8,9 @@ import java.util.ArrayList;
 public class SimpleIndex implements Index {
     private List<Website> websites;
 
-
     @Override
     public void build(List<Website> listOfWebsites) {
-        websites = new ArrayList<>(listOfWebsites);
+        websites = listOfWebsites;
 
     }
 

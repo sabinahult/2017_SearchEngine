@@ -13,9 +13,9 @@ public class Website {
 
     /**
      * Constructor for a website object.
-     * @param url
-     * @param title
-     * @param words
+     * @param url A string formatted as an url starting with https//:
+     * @param title The title of the website
+     * @param words The list of words contained on the website
      */
 
     public Website(String url, String title, List<String> words) {
@@ -40,7 +40,10 @@ public class Website {
         return url;
     }
 
-    //Get-method for the words ArrayList
+    /**
+     * Returns the list of words for this website
+     * @return listOfWords
+     */
     public List<String> getWords() {
         return words;
     }
@@ -48,7 +51,7 @@ public class Website {
     /**
      * Checks whether a word is present on a website or not.
      * @param word The query word
-     * @return True if the word is present on within the words list of the website
+     * @return True if the word is present within the words-list of the website
      */
 
     public Boolean containsWord(String word) {
