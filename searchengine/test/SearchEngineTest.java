@@ -16,5 +16,4 @@ class SearchEngineTest {
     @Test
     void main() {
     }
-
 }

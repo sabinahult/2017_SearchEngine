@@ -20,5 +20,3 @@ import java.util.List;
      */
     List<Website> lookup(String word);
 }
-
-

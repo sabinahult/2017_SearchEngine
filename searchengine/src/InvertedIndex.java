@@ -7,14 +7,18 @@ import java.util.*;
 public class InvertedIndex implements Index {
     private Map<String, List<Website>> websitesMap;
 
+    public InvertedIndex(Map<String, List<Website>> index) {
+        websitesMap = index;
+    }
+
     @Override
     public void build(List<Website> listOfWebsites) {
-        websitesMap = new HashMap<>(); // TreeMap or HashMap depending on wished implementation
+        //websitesMap = new HashMap<>(); // TreeMap or HashMap depending on wished implementation
 
-        //Looking at each website in the dataset
+        //Looking at each website in the data set
         for (Website site : listOfWebsites) {
 
-            //Looking at the wordslist for current website
+            //Looking at the word list for current website
             for (String word : site.getWords()) {
 
                 //If the map does not contain the word as a key, then add the key and map to the current website
@@ -44,4 +48,3 @@ public class InvertedIndex implements Index {
         }
     }
 }
-

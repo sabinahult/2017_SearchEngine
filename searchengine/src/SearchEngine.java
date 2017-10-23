@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,26 +23,32 @@ public class SearchEngine {
         //Debugging to see contents of websites array after it's created from reading the file
         //System.out.println(sites.toString());
 
-        Index index = new InvertedIndex();
+        //Made a constructor in the InvertedIndex class, that takes a map, so when declaring it here
+        //we are deciding which implementation to use, instead of changing it in the class itself every time
+        Index index = new InvertedIndex(new HashMap<>());
         index.build(sites);
 
         System.out.println("Please provide a query word");
 
         //SEARCH LOOP
         while (sc.hasNext()) {
-            String line = sc.nextLine();
+            TinyTimer timer = new TinyTimer();
+            timer.start();
 
-           foundSites = index.lookup(line);
+            String line = sc.nextLine();
+            foundSites = index.lookup(line);
 
             if(foundSites.isEmpty()) {
-                System.out.println("No website contains " + line); //Assignment 2
+                System.out.println("No website contains " + line);
             } else {
                 for(Website w : foundSites)
                 System.out.println("Query is found on '" + w.getUrl() + "'");
             }
 
+            timer.end();
+            timer.printDuration();
+
             System.out.println("Please provide the next query word");
         }
     }
 }
-

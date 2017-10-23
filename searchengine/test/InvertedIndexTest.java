@@ -13,5 +13,5 @@ class InvertedIndexTest {
     @Test
     void lookup() {
     }
-
 }
+

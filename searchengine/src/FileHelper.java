@@ -29,8 +29,8 @@ public class FileHelper {
                 String line = sc.nextLine();
                 if (line.startsWith("*PAGE:")) {
 
-                    //If all variables already has a value (because this is not the first iteration,
-                    //then create website from data gathered in previous iteration)
+                    //If all variables already has a value (because this is not the first iteration),
+                    //then create website from data gathered in previous iteration
                     if (isEntryValid(url, title, listOfWords)) {
                         sites.add(new Website(url, title, listOfWords));
                     }
@@ -53,12 +53,6 @@ public class FileHelper {
                 sites.add(new Website(url, title, listOfWords));
             }
 
-//            //Debug: Seeing what's in the dataset
-//            System.out.println("Debugging to see what's in the list of websites:");
-//            for(Website site : sites) {
-//                System.out.println(site.toString());
-//            }
-
         } catch (FileNotFoundException e) {
             System.out.println("Couldn't load the given file");
            e.printStackTrace();
@@ -74,7 +68,7 @@ public class FileHelper {
      * @param listOfWords The list of words contained on the website
      * @return True if all parameters contains a value
      */
-    static boolean isEntryValid(String url, String title, List<String> listOfWords) {
+    private static boolean isEntryValid(String url, String title, List<String> listOfWords) {
         return url != null && title != null && !listOfWords.isEmpty();
     }
 }

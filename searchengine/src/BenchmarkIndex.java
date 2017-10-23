@@ -1,53 +1,52 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina
  */
 public class BenchmarkIndex {
     public static void main(String[] args) {
-        List<Website> sites = FileHelper.parseFile("../data/enwiki-medium.txt");
-        List<String> queryWords = new ArrayList<>();
+        //Making a list of each data set so it's easier to switch between them later
+        List<Website> sitesTiny = FileHelper.parseFile("../data/enwiki-tiny.txt");
+        List<Website> sitesSmall = FileHelper.parseFile("../data/enwiki-small.txt");
+        List<Website> sitesMedium = FileHelper.parseFile("../data/enwiki-medium.txt");
 
-        //Adding each test word to the list queryWords
-        queryWords.add("and");
-        queryWords.add("of");
-        queryWords.add("copenhagen");
-        queryWords.add("japan");
-        queryWords.add("is");
-        queryWords.add("established");
-        queryWords.add("urban");
-        queryWords.add("period");
-        queryWords.add("the");
-        queryWords.add("conflicts");
-        queryWords.add("devastating");
-        queryWords.add("Denmark"); //capitalized
-        queryWords.add("jens"); //is not there
+        List<String> queryWords = new ArrayList<>();
+        queryWords.addAll(Arrays.asList("and", "of", "zebra", "japan", "is", "established",
+                "urban", "period", "the", "conflicts", "devastating", "Denmark", "jens", "small"));
+
 
         //Choose which implementation of index to benchmark. If choosing InvertedIndex, remember to also choose either
         //HashMap or TreeMap implementation in the InvertedIndex class
-        Index index = new SimpleIndex();
-        index.build(sites);
+        Index index = new InvertedIndex(new HashMap<>());
 
-        //Running warm up repetitions of the code to be benchmarked to get Java to do it's optimise-thingy...
-        int localWebsites = 0;
-        int warmupRepetitions = 1000;
-        for(int i = 0; i < warmupRepetitions; i++){
+        //Choose which data set to use, and pass it as an argument
+        index.build(sitesSmall);
 
-            for(String query : queryWords){
-                localWebsites += index.lookup(query).size();
+        //The makingQuery method returns an int, so we're saving that in a variable for printing out
+        int result = makingQueries(1000, queryWords, index);
+        System.out.println("Number of websites found during warmup: " + result);
+
+        //Re-implemented the TinyTimer class
+        TinyTimer tinyTimer = new TinyTimer();
+        tinyTimer.start();
+        result = makingQueries(1, queryWords, index);
+        tinyTimer.end();
+
+        System.out.println("Running queries on dataset: " + tinyTimer.duration() + " nanoseconds.");
+        System.out.println("Websites found: " + result);
+
+    }
+
+    //Made a helper-method as suggested for running the code
+    private static int makingQueries(int repetitions, List<String> collection, Index index) {
+        int foundWebsites = 0;
+        for (int i = 0; i < repetitions; i++) {
+            for (String query : collection) {
+                foundWebsites += index.lookup(query).size();
             }
         }
-
-        //Benchmarking the query by timing it
-        int foundWebsites = 0;
-        long startTime = System.nanoTime();
-
-        for(String query : queryWords){
-            foundWebsites += index.lookup(query).size();
-        }
-        long elapsedTime = System.nanoTime() - startTime;
-
-        System.out.println("Running queries on dataset: " + (elapsedTime/1000) + " microseconds.");
-        System.out.println("Websites found: " + foundWebsites);}
+        return foundWebsites;
+    }
 }
