@@ -41,7 +41,6 @@ class IndexTest {
 
     @Test
     void buildSimple() {
-
         assertEquals("SimpleIndex{websites=[database.Website{title='example', url='zebra.com', words=[zebra]}, database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}, database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}]}", simpleIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
