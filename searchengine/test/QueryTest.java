@@ -20,12 +20,12 @@ class QueryTest {
 
         List<Website> sites = new ArrayList<>();
         sites.add(new Website("example1.com", "Example 1", Arrays.asList("queen")));
-        sites.add(new Website("example2.com", "Example 1", Arrays.asList("queen", "denmark")));
-        sites.add(new Website("example3.com", "Example 1", Arrays.asList("president")));
-        sites.add(new Website("example4.com", "Example 1", Arrays.asList("president", "usa")));
-        sites.add(new Website("example5.com", "Example 2", Arrays.asList("queen", "president", "jens")));
-        sites.add(new Website("example6.com", "Example 3", Arrays.asList("denmark", "president", "chancellor", "germany", "queen", "USA")));
-        sites.add(new Website("example7.com", "Example 4", Arrays.asList("adam", "eve", "snake", "apple")));
+        sites.add(new Website("example2.com", "Example 2", Arrays.asList("queen", "denmark")));
+        sites.add(new Website("example3.com", "Example 3", Arrays.asList("president")));
+        sites.add(new Website("example4.com", "Example 4", Arrays.asList("president", "usa")));
+        sites.add(new Website("example5.com", "Example 5", Arrays.asList("queen", "president", "jens")));
+        sites.add(new Website("example6.com", "Example 6", Arrays.asList("denmark", "president", "chancellor", "germany", "queen", "USA")));
+        sites.add(new Website("example7.com", "Example 7", Arrays.asList("adam", "eve", "snake", "apple")));
 
     }
 
