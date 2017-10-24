@@ -38,6 +38,6 @@ public class TinyTimer {
      */
     public void printDuration() {
         System.out.println("QueryTime: " + duration() + " nanoseconds (" + duration() / 1000 + " microseconds).");
-        System.out.println("Provided by performance.TinyTimer :).");
+        System.out.println("Provided by TinyTimer :).");
     }
 }
