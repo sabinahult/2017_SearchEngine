@@ -1,3 +1,5 @@
+package database;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -6,7 +8,7 @@ import java.util.Scanner;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina
- * The overall function of the FileHelper class is to construct a database of websites from a dataset which will
+ * The overall function of the database.FileHelper class is to construct a database of websites from a dataset which will
  * be the database the search engine queries.
  */
 

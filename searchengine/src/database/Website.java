@@ -1,3 +1,5 @@
+package database;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +62,7 @@ public class Website {
 
     @Override
     public String toString() {
-        return "Website{" +
+        return "database.Website{" +
                 "title='" + title + '\'' +
                 ", url='" + url + '\'' +
                 ", words=" + words +

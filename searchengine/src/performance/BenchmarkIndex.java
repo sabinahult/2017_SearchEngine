@@ -1,3 +1,10 @@
+package performance;
+
+import database.FileHelper;
+import database.Website;
+import index.Index;
+import index.InvertedIndex;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -5,6 +12,8 @@ import java.util.List;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina
+ * The overall function of the benchmarking class is to benchmark query times with different datasets
+ * and different implementations.
  */
 public class BenchmarkIndex {
     public static void main(String[] args) {
@@ -18,8 +27,8 @@ public class BenchmarkIndex {
                 "urban", "period", "the", "conflicts", "devastating", "Denmark", "jens", "small"));
 
 
-        //Choose which implementation of index to benchmark. If choosing InvertedIndex, remember to also choose either
-        //HashMap or TreeMap implementation in the InvertedIndex class
+        //Choose which implementation of index to benchmark. If choosing index.InvertedIndex, remember to also choose either
+        //HashMap or TreeMap implementation in the index.InvertedIndex class
         Index index = new InvertedIndex(new HashMap<>());
 
         //Choose which data set to use, and pass it as an argument
@@ -29,7 +38,7 @@ public class BenchmarkIndex {
         int result = makingQueries(1000, queryWords, index);
         System.out.println("Number of websites found during warmup: " + result);
 
-        //Re-implemented the TinyTimer class
+        //Re-implemented the performance.TinyTimer class
         TinyTimer tinyTimer = new TinyTimer();
         tinyTimer.start();
         result = makingQueries(1, queryWords, index);

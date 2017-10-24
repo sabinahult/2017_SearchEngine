@@ -1,3 +1,7 @@
+package index;
+
+import database.Website;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -24,5 +28,10 @@ public class SimpleIndex implements Index {
             }
         }
         return relevantSites;
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleIndex{" + "websites=" + websites + '}';
     }
 }

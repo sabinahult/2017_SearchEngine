@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InvertedIndexTest {
+class QueryTest {
+    @BeforeEach
+    void setUp() {
+    }
 
-    @Test
-    void build() {
+    @AfterEach
+    void tearDown() {
     }
 
     @Test
-    void lookup() {
-    }
+    void test(){}
+
 }
-

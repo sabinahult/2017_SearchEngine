@@ -1,3 +1,9 @@
+import database.FileHelper;
+import database.Website;
+import index.Index;
+import index.InvertedIndex;
+import performance.TinyTimer;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -23,7 +29,7 @@ public class SearchEngine {
         //Debugging to see contents of websites array after it's created from reading the file
         //System.out.println(sites.toString());
 
-        //Made a constructor in the InvertedIndex class, that takes a map, so when declaring it here
+        //Made a constructor in the index.InvertedIndex class, that takes a map, so when declaring it here
         //we are deciding which implementation to use, instead of changing it in the class itself every time
         Index index = new InvertedIndex(new HashMap<>());
         index.build(sites);

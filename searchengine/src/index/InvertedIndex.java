@@ -1,3 +1,7 @@
+package index;
+
+import database.Website;
+
 import java.util.*;
 
 /**
@@ -46,5 +50,10 @@ public class InvertedIndex implements Index {
         } else {
             return new ArrayList<>();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "InvertedIndex{" + "websitesMap=" + websitesMap + '}';
     }
 }
