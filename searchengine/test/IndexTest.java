@@ -42,19 +42,19 @@ class IndexTest {
     @Test
     void buildSimple() {
 
-        assertEquals("SimpleIndex{websites=[database.Website{title='example', url='example3.com', words=[word7]}, database.Website{title='example1', url='example.com', words=[word1, word2, word1]}, database.Website{title='example2', url='example2.com', words=[word3, word2]}]}", simpleIndex.toString());
+        assertEquals("SimpleIndex{websites=[database.Website{title='example', url='zebra.com', words=[zebra]}, database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}, database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}]}", simpleIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 
     @Test
     void buildTree() {
-        assertEquals("InvertedIndex{websitesMap={word1=[database.Website{title='example1', url='example.com', words=[word1, word2, word1]}], word2=[database.Website{title='example1', url='example.com', words=[word1, word2, word1]}, database.Website{title='example2', url='example2.com', words=[word3, word2]}], word3=[database.Website{title='example2', url='example2.com', words=[word3, word2]}], word7=[database.Website{title='example', url='example3.com', words=[word7]}]}}", treeIndex.toString());
+        assertEquals("InvertedIndex{websitesMap={adam=[database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}], jens=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], man=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], urban=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], zebra=[database.Website{title='example', url='zebra.com', words=[zebra]}, database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}]}}", treeIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 
     @Test
     void buildHash(){
-        assertEquals("InvertedIndex{websitesMap={word1=[database.Website{title='example1', url='example.com', words=[word1, word2, word1]}], word3=[database.Website{title='example2', url='example2.com', words=[word3, word2]}], word2=[database.Website{title='example1', url='example.com', words=[word1, word2, word1]}, database.Website{title='example2', url='example2.com', words=[word3, word2]}], word7=[database.Website{title='example', url='example3.com', words=[word7]}]}}", hashIndex.toString());
+        assertEquals("InvertedIndex{websitesMap={zebra=[database.Website{title='example', url='zebra.com', words=[zebra]}, database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}], jens=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], adam=[database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}], urban=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], man=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}]}}", hashIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 
