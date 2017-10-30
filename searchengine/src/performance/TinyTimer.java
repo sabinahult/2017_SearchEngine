@@ -7,9 +7,12 @@ package performance;
  */
 
 public class TinyTimer {
-
     private long startTime;
     long endTime;
+
+    //A splash of color while we wait for some real GUI :)
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_RESET = "\u001B[0m";
 
     /**
      * Timestamp in nanoseconds
@@ -37,7 +40,8 @@ public class TinyTimer {
      * Prints out the duration in nanoseconds and microseconds.
      */
     public void printDuration() {
-        System.out.println("QueryTime: " + duration() + " nanoseconds (" + duration() / 1000 + " microseconds).");
-        System.out.println("Provided by TinyTimer :).");
+
+        System.out.println(ANSI_PURPLE + "QueryTime: " + duration() + " nanoseconds (" + duration() / 1000 + " microseconds).");
+        System.out.println("Provided by TinyTimer :)." + ANSI_RESET);
     }
 }
