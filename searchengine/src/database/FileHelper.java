@@ -18,6 +18,7 @@ public class FileHelper {
      * @param filename This is the dataset that is the foundation for the database
      * @return Returns a list of websites that contains the query word or words
      */
+
     public static List<Website> parseFile(String filename) {
         List<Website> sites = new ArrayList<>();
         String url = null;
@@ -37,7 +38,7 @@ public class FileHelper {
                         sites.add(new Website(url, title, listOfWords));
                     }
 
-                    //New website starts
+                    //New website is being read in
                     url = line.substring(6);
                     title = null;
                     listOfWords.clear();

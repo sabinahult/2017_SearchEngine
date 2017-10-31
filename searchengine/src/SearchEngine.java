@@ -26,42 +26,35 @@ public class SearchEngine {
         List<Website> sites = FileHelper.parseFile(args[0]);
         List<Website> foundSites;
 
-        //Debugging to see contents of websites array after it's created from reading the file
-        //System.out.println(sites.toString());
-
         //Made a constructor in the InvertedIndex class, that takes a map, so when declaring it here
         //we are deciding which implementation to use, instead of changing it in the class itself every time
         Index index = new InvertedIndex(new HashMap<>());
         index.build(sites);
 
-        System.out.println("Please provide a query word");
+        //Using the new QueryHandler class
+        QueryHandler queryHandler = new QueryHandler();
+
+        System.out.println("Please provide a queryHandler word");
 
         //SEARCH LOOP
         while(sc.hasNext()) {
             TinyTimer timer = new TinyTimer();
             timer.start();
 
-            //Added .toLowerCase()
             String line = sc.nextLine();
-
-            //This is no longer needed when using the Query class
-            //foundSites = index.lookup(line);
-
-            //Using the new Query class
-            Query query = new Query();
-            foundSites = query.runQuery(line, index);
+            foundSites = queryHandler.runQuery(line, index);
 
             if(foundSites.isEmpty()) {
                 System.out.println("No website contains " + line);
             } else {
                 for(Website w : foundSites)
-                System.out.println("Query is found on '" + w.getUrl() + "'");
+                System.out.println("performance.QueryHandler is found on '" + w.getUrl() + "'");
             }
 
             timer.end();
             timer.printDuration();
 
-            System.out.println("Please provide the next query word");
+            System.out.println("Please provide the next queryHandler word");
         }
     }
 }

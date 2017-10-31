@@ -7,9 +7,8 @@ import java.util.*;
  * Overall function of the class is to query the database and return the result to SearchEngine.
  */
 
-public class Query {
-    private List<Website> foundSites = new ArrayList<>();
-    private List<Website> finalResult = new ArrayList<>();
+public class QueryHandler {
+
 
     /**
      * Takes a string of words (full query), and splits them around or into sub-queries. For each of the sub-queries
@@ -32,6 +31,9 @@ public class Query {
      * empty list of none of the sub-queries are found.
      */
     public List<Website> runQuery(String fullQuery, Index index) {
+        List<Website> foundSites = new ArrayList<>();
+        List<Website> finalResult = new ArrayList<>();
+
         String fullQueryLowerCase = fullQuery.toLowerCase();
 
         String[] subQuery = fullQueryLowerCase.split("\\b\\s*or\\s*\\b");

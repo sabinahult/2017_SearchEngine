@@ -28,7 +28,7 @@ public class BenchmarkIndex {
 
 
         //Choose which implementation of index to benchmark. If choosing index.InvertedIndex, remember to also choose either
-        //HashMap or TreeMap implementation in the index.InvertedIndex class
+        //HashMap or TreeMap
         Index index = new InvertedIndex(new HashMap<>());
 
         //Choose which data set to use, and pass it as an argument
