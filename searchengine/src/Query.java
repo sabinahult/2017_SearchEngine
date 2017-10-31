@@ -27,22 +27,27 @@ public class Query {
         for (String line : queryLines) {
             String[] words = line.split(" ");
 
+            //This boolean is to make sure, that if a word in a sequence is not found, then there's no need
+            //to keep searching and an empty list should be returned
             boolean isFound = true;
+            for(String word : words) {
+                if(isFound) {
+                    List<Website> tempList = index.lookup(word);
 
-            for (String word : words) {
-                List<Website> tempList = index.lookup(word);
+                    //If a word is not found there's no need to search for the next word, skip the rest and return
+                    //empty list
+                    if(tempList.isEmpty()) {
+                        isFound = false;
+                        foundSites.clear();
+                    }
 
-                if(tempList.isEmpty()) {
-                    isFound = false;
-                    foundSites.clear();
-                }
-
-                while(isFound) {
-
-                    if(foundSites.isEmpty()) {
-                        foundSites.addAll(tempList);
-                    } else {
-                        foundSites.retainAll(tempList);
+                    else {
+                        //foundSites will be empty for the first word
+                        if(foundSites.isEmpty()) {
+                            foundSites.addAll(tempList);
+                        } else {
+                            foundSites.retainAll(tempList);
+                        }
                     }
                 }
             }
