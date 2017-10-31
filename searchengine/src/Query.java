@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Author: Group M: Sabina, Lisa, Line and Susan.
- * Overall function of the class is to query the database and return result.
+ * Overall function of the class is to query the database and return the result.
  */
 
 public class Query {
