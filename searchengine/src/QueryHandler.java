@@ -8,8 +8,6 @@ import java.util.*;
  */
 
 public class QueryHandler {
-
-
     /**
      * Takes a string of words (full query), and splits them around or into sub-queries. For each of the sub-queries
      * it splits them further around a white space into an array of single words. Then for each of those single words
@@ -49,7 +47,7 @@ public class QueryHandler {
                     List<Website> tempList = index.lookup(word);
 
                     //If a word is not found there's no need to search for the next word, skip the rest and return
-                    //empty list
+                    //empty list...
                     if(tempList.isEmpty()) {
                         isFound = false;
                         foundSites.clear();
