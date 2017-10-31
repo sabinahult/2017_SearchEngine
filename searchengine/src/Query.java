@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Author: Group M: Sabina, Lisa, Line and Susan.
- * Overall function of the class is to query the database and return the result.
+ * Overall function of the class is to query the database and return the result to SearchEngine.
  */
 
 public class Query {
@@ -12,29 +12,31 @@ public class Query {
     private List<Website> finalResult = new ArrayList<>();
 
     /**
-     * Takes a string of words, and splits them around or. For each of the returned strings it splits them further around a
-     * white space into an array of single words. Then for each of those single words it calls the lookup method of the
-     * index, which returns a list of websites that contain the word. If the foundSites variable is empty, it stops looking
-     * for the next word in that sequence, and moves on to the first word in the next sequence (if there is one).
+     * Takes a string of words (full query), and splits them around or into sub-queries. For each of the sub-queries
+     * it splits them further around a white space into an array of single words. Then for each of those single words
+     * it calls the lookup method of the index, which returns a list of websites that contains the word. If the
+     * foundSites variable is empty, it stops looking for the next word in that sequence, and moves on to the first
+     * word in the next sub-query (if there is one).
      *
      * If the word is found and the foundSites variable is empty, it adds all sites to foundSites. If foundSites already
      * has elements (from a previous iteration) it keeps only those elements that are the same between the two collections,
-     * because we only want to return websites that contains all words in the given part of the searchWords.
+     * because we only want to return websites that contains all words in the given sub-query.
      *
-     * When all words in the given string has been looked up, it finally adds all the found websites to finalResult.
-     * And then it does it all again for the next part of the searchWords, if there is more.
+     * When all words in a sub-query been looked up, it finally adds all the found websites to finalResult.
+     * And then it does it all again for the next sub-query, if there is more.
      *
-     * This method can take any number of substrings of a searchWords split by or and any number of words in a substring.
-     * @param searchWords The input from the user passed from SearchEngine
+     * This method can take any number of sub-queries of a fullQuery split by or, and any number of words in a sub-query.
+     * @param fullQuery The input from the user passed from SearchEngine
      * @param index The database to search in for the given input passed from SearchEngine
-     * @return A list of website objects that contain all of the given words in the searchWords
+     * @return A list of website objects that contain all of the given words in one or more of the sub-queries, or an
+     * empty list of none of the sub-queries are found.
      */
-    public List<Website> runQuery(String searchWords, Index index) {
-        String searchWordsLowerCase = searchWords.toLowerCase();
+    public List<Website> runQuery(String fullQuery, Index index) {
+        String fullQueryLowerCase = fullQuery.toLowerCase();
 
-        String[] searchWordsSplit = searchWordsLowerCase.split(" or ");
+        String[] subQuery = fullQueryLowerCase.split(" or ");
 
-        for (String line : searchWordsSplit) {
+        for (String line : subQuery) {
             String[] words = line.split(" ");
 
             //This boolean is to make sure, that if a word in a sequence is not found, then there's no need
