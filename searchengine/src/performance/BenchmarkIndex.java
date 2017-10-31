@@ -38,7 +38,7 @@ public class BenchmarkIndex {
         int result = makingQueries(1000, queryWords, index);
         System.out.println("Number of websites found during warmup: " + result);
 
-        //Re-implemented the performance.TinyTimer class
+        //Re-implemented the TinyTimer class
         TinyTimer tinyTimer = new TinyTimer();
         tinyTimer.start();
         result = makingQueries(1, queryWords, index);
