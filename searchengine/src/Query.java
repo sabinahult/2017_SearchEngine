@@ -34,10 +34,10 @@ public class Query {
     public List<Website> runQuery(String fullQuery, Index index) {
         String fullQueryLowerCase = fullQuery.toLowerCase();
 
-        String[] subQuery = fullQueryLowerCase.split(" or ");
+        String[] subQuery = fullQueryLowerCase.split("\\b\\s*or\\s*\\b");
 
         for (String line : subQuery) {
-            String[] words = line.split(" ");
+            String[] words = line.split("\\s+");
 
             //This boolean is to make sure, that if a word in a sequence is not found, then there's no need
             //to keep searching and an empty list should be returned because it's an all or nothing deal...
@@ -64,7 +64,13 @@ public class Query {
                 }
             }
 
-            finalResult.addAll(foundSites);
+            //Trying to get rid of duplicates which occur in events where the same search word are on both sides
+            //of an 'or'...
+            for(Website site : foundSites)
+                if(!finalResult.contains(site)) {
+                finalResult.add(site);
+                }
+
             foundSites.clear();
         }
 
