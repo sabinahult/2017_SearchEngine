@@ -29,11 +29,10 @@ public class InvertedIndex implements Index {
                 if (!websitesMap.containsKey(word)) {
                     websitesMap.put(word, new ArrayList<>());
                     websitesMap.get(word).add(site);
-
-                    //If the map contains the key already, check if the current website object is already in the list
-                    // mapped to the key word. If not, then add it. If it is, do nothing.
                 }
 
+                //If the map contains the key already, check if the current website object is already in the list
+                // mapped to the key word. If not, then add it. If it is, do nothing.
                 else if(!websitesMap.get(word).contains(site)) {
                         websitesMap.get(word).add(site);
                     }
