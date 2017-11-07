@@ -57,18 +57,16 @@ public class QueryHandler {
                     foundSites.retainAll(tempList);
                 }
             }
+
+            //Trying to get rid of duplicates which occur in events where the same search word are on both sides
+            //of an 'OR'...
+            for (Website site : foundSites)
+                if (!finalResult.contains(site)) {
+                    finalResult.add(site);
+                }
+
+            foundSites.clear();
         }
-
-
-        //Trying to get rid of duplicates which occur in events where the same search word are on both sides
-        //of an 'OR'...
-        for (Website site : foundSites)
-            if (!finalResult.contains(site)) {
-                finalResult.add(site);
-            }
-
-        foundSites.clear();
-
         return finalResult;
     }
 }
