@@ -15,7 +15,6 @@ import java.util.List;
      * @param listOfWebsites should be a List of website objects
      */
     void build(List<Website> listOfWebsites);
-
     /**
      * Takes a word and looks through the database of websites
      * @param word Should contain the query word

@@ -32,9 +32,9 @@ public class SearchEngine {
         index.build(sites);
 
         //Using the new QueryHandler class
-        QueryHandler queryHandler = new QueryHandler();
+        QueryHandler queryHandler = new QueryHandler(index);
 
-        System.out.println("Please provide a queryHandler word");
+        System.out.println("Please provide a query word");
 
         //SEARCH LOOP
         while(sc.hasNext()) {
@@ -42,19 +42,19 @@ public class SearchEngine {
             timer.start();
 
             String line = sc.nextLine();
-            foundSites = queryHandler.runQuery(line, index);
+            foundSites = queryHandler.runQuery(line);
 
             if(foundSites.isEmpty()) {
                 System.out.println("No website contains " + line);
             } else {
                 for(Website w : foundSites)
-                System.out.println("performance.QueryHandler is found on '" + w.getUrl() + "'");
+                System.out.println(line + " is found on '" + w.getUrl() + "'");
             }
 
             timer.end();
             timer.printDuration();
 
-            System.out.println("Please provide the next queryHandler word");
+            System.out.println("Please provide the next query word");
         }
     }
 }
