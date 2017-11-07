@@ -40,7 +40,6 @@ public class TinyTimer {
      * Prints out the duration in nanoseconds and microseconds.
      */
     public void printDuration() {
-
         System.out.println(ANSI_PURPLE + "QueryTime: " + duration() + " nanoseconds (" + duration() / 1000 + " microseconds).");
         System.out.println("Provided by TinyTimer :)." + ANSI_RESET);
     }
