@@ -5,21 +5,6 @@ import java.util.*;
 /**
  * Author: Group M: Sabina, Lisa, Line and Susan.
  * Overall function of the class is to query the database and return the result to SearchEngine.
- *
- * Takes a string of words (full query), and splits them around or into sub-queries. For each of the sub-queries
- * it splits them further around a white space into an array of single words. Then for each of those single words
- * it calls the lookup method of the index, which returns a list of websites that contains the word. If the
- * foundSites variable is empty, it stops looking for the next word in that sequence, and moves on to the first
- * word in the next sub-query (if there is one).
- * <p>
- * If the word is found and the foundSites variable is empty, it adds all sites to foundSites. If foundSites already
- * has elements (from a previous iteration) it keeps only those elements that are the same between the two collections,
- * because we only want to return websites that contains all words in the given sub-query.
- * <p>
- * When all words in a sub-query been looked up, it finally adds all the found websites to finalResult.
- * And then it does it all again for the next sub-query, if there is more.
- * <p>
- * This method can take any number of sub-queries of a fullQuery split by or, and any number of words in a sub-query.
  */
 
 public class QueryHandler {
@@ -29,6 +14,24 @@ public class QueryHandler {
         this.index = index;
     }
 
+    /**
+     * Takes a string of words (full query), and splits them around OR into sub-queries. For each of the sub-queries
+     * it splits them further around a white space into an array of single words. Then for each of those single words
+     * it calls the lookup method of the index, which returns a list of websites that contains the word. If the
+     * foundSites variable is empty, it stops looking for the next word in that sequence, and moves on to the first
+     * word in the next sub-query (if there is one).
+     *
+     * If the word is found and the foundSites variable is empty, it adds all sites to foundSites. If foundSites already
+     * has elements (from a previous iteration) it keeps only those elements that are the same between the two collections,
+     * because we only want to return websites that contains all words in the given sub-query.
+     *
+     * When all words in a sub-query been looked up, it finally adds all the found websites to finalResult.
+     * And then it does it all again for the next sub-query, if there is more.
+     *
+     * This method can take any number of sub-queries of a fullQuery split by OR, and any number of words in a sub-query.
+     * @param fullQuery search words passed by the SearchEngine
+     * return A list of relevant websites
+     */
     public List<Website> runQuery(String fullQuery) {
         List<Website> foundSites = new ArrayList<>();
         List<Website> finalResult = new ArrayList<>();
