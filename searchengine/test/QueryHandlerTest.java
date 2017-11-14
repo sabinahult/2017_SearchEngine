@@ -32,38 +32,38 @@ class QueryHandlerTest {
 
     @Test
     void testSingleWord(){
-        assertEquals(4, queryHandlerObject.runQuery("queen").size());
-        assertEquals(2, queryHandlerObject.runQuery("denmark").size());
-        assertEquals(2, queryHandlerObject.runQuery("Denmark").size());
-        assertEquals(1, queryHandlerObject.runQuery("JENS").size());
+        assertEquals(4, queryHandlerObject.getMatchingWebsites("queen").size());
+        assertEquals(2, queryHandlerObject.getMatchingWebsites("denmark").size());
+        assertEquals(2, queryHandlerObject.getMatchingWebsites("Denmark").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("JENS").size());
     }
 
     @Test
     void testMultipleWord(){
-        assertEquals(1, queryHandlerObject.runQuery("president jimmy").size());
-        assertEquals(2, queryHandlerObject.runQuery("queen denmark").size());
-        assertEquals(0, queryHandlerObject.runQuery("queen denmark prince").size());
-        assertEquals(0, queryHandlerObject.runQuery("adam KVOR eve").size());
-        assertEquals(1, queryHandlerObject.runQuery("or").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("president jimmy").size());
+        assertEquals(2, queryHandlerObject.getMatchingWebsites("queen denmark").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites("queen denmark prince").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites("adam KVOR eve").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("or").size());
     }
 
     @Test
     void testORQueries(){
-        assertEquals(4, queryHandlerObject.runQuery("president OR adam").size());
-        assertEquals(4, queryHandlerObject.runQuery("queen OR queen").size());
-        assertEquals(1, queryHandlerObject.runQuery("hans OR eve").size());
-        assertEquals(0, queryHandlerObject.runQuery("OR").size());
-        assertEquals(1, queryHandlerObject.runQuery("OR snake OR").size());
-        assertEquals(1, queryHandlerObject.runQuery("President jimmy OR ").size());
-        assertEquals(1, queryHandlerObject.runQuery("or OR OROR").size());
-        assertEquals(1, queryHandlerObject.runQuery("OR adam eve").size());
+        assertEquals(4, queryHandlerObject.getMatchingWebsites("president OR adam").size());
+        assertEquals(4, queryHandlerObject.getMatchingWebsites("queen OR queen").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("hans OR eve").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites("OR").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("OR snake OR").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("President jimmy OR ").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("or OR OROR").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("OR adam eve").size());
     }
 
     @Test
     void testCornerCases(){
-        assertEquals(0, queryHandlerObject.runQuery("").size());
-        assertEquals(0, queryHandlerObject.runQuery("handsome").size());
-        assertEquals(0, queryHandlerObject.runQuery(" ").size());
-        assertEquals(0, queryHandlerObject.runQuery("høne").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites("").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites("handsome").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites(" ").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites("høne").size());
     }
 }

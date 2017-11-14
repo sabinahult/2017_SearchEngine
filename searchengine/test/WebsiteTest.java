@@ -44,6 +44,4 @@ class WebsiteTest {
         assertTrue(site3.getWords().get(0).contains("banking"));
         assertFalse(site3.getWords().get(3).contains("denmark"));
     }
-
-
 }

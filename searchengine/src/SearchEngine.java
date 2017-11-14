@@ -42,7 +42,7 @@ public class SearchEngine {
             timer.start();
 
             String line = sc.nextLine();
-            foundSites = queryHandler.runQuery(line);
+            foundSites = queryHandler.getMatchingWebsites(line);
 
             if(foundSites.isEmpty()) {
                 System.out.println("No website contains " + line);
