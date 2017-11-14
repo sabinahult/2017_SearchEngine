@@ -1,7 +1,10 @@
 import database.Website;
 import index.Index;
+import ranking.Score;
+import ranking.TFScore;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Author: Group M: Sabina, Lisa, Line and Susan.
@@ -10,7 +13,6 @@ import java.util.*;
 
 public class QueryHandler {
     private Index index;
-
 
     public QueryHandler(Index index) {
         this.index = index;
@@ -24,7 +26,10 @@ public class QueryHandler {
      */
     public List<Website> getMatchingWebsites(String fullQuery) {
         String[] subQuery = fullQuery.split("\\b\\s*OR\\s*\\b");
-        return evaluateFullQuery(subQuery);
+        Map<Website, Double> finalRankedResult = evaluateFullQuery(subQuery);
+
+        //Martins code for turning a Map into a List...
+        return finalRankedResult.entrySet().stream().sorted((x,y) -> y.getValue(). compareTo(x.getValue())).map(Map.Entry::getKey).collect(Collectors.toList());
     }
 
     /**
@@ -34,16 +39,23 @@ public class QueryHandler {
      * @param subQuery Array of strings passed by getMatchingWebsites
      * @return a List<Website> to getMatchingWebsites
      */
-    private List<Website> evaluateFullQuery(String[] subQuery) {
-        List<Website> finalResult = new ArrayList<>();
+    private Map<Website, Double> evaluateFullQuery(String[] subQuery) {
+        Map<Website, Double> finalResult = new HashMap<>();
 
         for (String line : subQuery) {
             String[] words = line.split("\\s+");
-            List<Website> foundSites = evaluateSubQuery(words);
+            Map<Website, Double> foundSites = evaluateSubQuery(words);
 
-            for (Website site : foundSites)
-                if (!finalResult.contains(site)) {
-                    finalResult.add(site);
+            for (Website site : foundSites.keySet())
+                if (!finalResult.containsKey(site)) {
+                    finalResult.put(site, foundSites.get(site));
+                }
+
+                else {
+                //Compare values, and keep site with highest score
+                    if(finalResult.get(site) < foundSites.get(site)) {
+                        finalResult.put(site, foundSites.get(site));
+                    }
                 }
         }
         return finalResult;
@@ -59,27 +71,35 @@ public class QueryHandler {
      * @param words Array of words received from evaluateFullQuery
      * @return a List<Website> that includes all the matching websites on one query
      */
-    private List<Website> evaluateSubQuery(String[] words) {
-        List<Website> foundSites = new ArrayList<>();
+    private Map<Website, Double> evaluateSubQuery(String[] words) {
+        Map<Website, Double> foundSitesRanked = new HashMap<>();
 
-        for (String word : words) {
+        for(String word : words) {
             word = word.toLowerCase();
             List<Website> tempList = index.lookup(word);
 
-            //If a word is not found there's no need to search for the next word, skip the rest and return
-            //empty list
-            if (tempList.isEmpty()) {
-                foundSites.clear();
+            //If a word is not found there's no need to search for the next word, skip the rest and return empty map
+            if(tempList.isEmpty()) {
+                foundSitesRanked.clear();
                 break;
             }
 
-            //foundSites will be empty for the first word
-            if (foundSites.isEmpty()) {
-                foundSites.addAll(tempList);
-            } else {
-                foundSites.retainAll(tempList);
+            //For each website in templist, getScore(word, website, index), and put Website and score into Map
+            for(Website site : tempList) {
+                Score ranking = new TFScore();
+
+                if(!foundSitesRanked.containsKey(site)) {
+                    //Add the website and score to map
+                    double score = ranking.getScore(word, site, index);
+                    foundSitesRanked.put(site, score);
+                } else {
+                    //If the site is already in the map, we want to add up the scores for that website
+                    double newScore = foundSitesRanked.get(site) + ranking.getScore(word, site, index);
+                    foundSitesRanked.replace(site, newScore);
+                }
             }
         }
-        return foundSites;
+
+        return foundSitesRanked;
     }
 }
