@@ -4,11 +4,9 @@ import database.FileHelper;
 import database.Website;
 import index.Index;
 import index.InvertedIndex;
+import index.SimpleIndex;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina
@@ -22,10 +20,10 @@ public class BenchmarkIndex {
         List<Website> sitesSmall = FileHelper.parseFile("../data/enwiki-small.txt");
         List<Website> sitesMedium = FileHelper.parseFile("../data/enwiki-medium.txt");
 
+
         List<String> queryWords = new ArrayList<>();
         queryWords.addAll(Arrays.asList("and", "of", "zebra", "japan", "is", "established",
                 "urban", "period", "the", "conflicts", "devastating", "Denmark", "jens", "small"));
-
 
         //Choose which implementation of index to benchmark. If choosing index.InvertedIndex, remember to also choose either
         //HashMap or TreeMap
