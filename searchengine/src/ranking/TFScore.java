@@ -8,18 +8,16 @@ import java.util.ArrayList;
 
 public class TFScore implements Score {
 
-
     @Override
-    public int getScore(String word, Website site, Index index) {
-
+    public double getScore(String word, Website site, Index index) {
         List<String> wordsOnWebpage = site.getWords();
-        int occuranceOfWords = 0;
+        double occurrenceOfWords = 0;
 
         for (String s : wordsOnWebpage){
             if(s.equals(word)){
-                occuranceOfWords++;
+                occurrenceOfWords++;
             }
         }
-        return occuranceOfWords;
+        return occurrenceOfWords;
     }
 }

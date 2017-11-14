@@ -5,5 +5,5 @@ import index.Index;
 
 public interface Score {
 
-    int getScore(String word, Website site, Index index);
+    double getScore(String word, Website site, Index index);
 }
