@@ -52,11 +52,6 @@ class QueryHandlerTest {
         assertEquals(4, queryHandlerObject.getMatchingWebsites("president OR adam").size());
         assertEquals(4, queryHandlerObject.getMatchingWebsites("queen OR queen").size());
         assertEquals(1, queryHandlerObject.getMatchingWebsites("hans OR eve").size());
-        assertEquals(0, queryHandlerObject.getMatchingWebsites("OR").size());
-        assertEquals(1, queryHandlerObject.getMatchingWebsites("OR snake OR").size());
-        assertEquals(1, queryHandlerObject.getMatchingWebsites("President jimmy OR ").size());
-        assertEquals(1, queryHandlerObject.getMatchingWebsites("or OR OROR").size());
-        assertEquals(1, queryHandlerObject.getMatchingWebsites("OR adam eve").size());
     }
 
     @Test
@@ -65,5 +60,10 @@ class QueryHandlerTest {
         assertEquals(0, queryHandlerObject.getMatchingWebsites("handsome").size());
         assertEquals(0, queryHandlerObject.getMatchingWebsites(" ").size());
         assertEquals(0, queryHandlerObject.getMatchingWebsites("høne").size());
+        assertEquals(0, queryHandlerObject.getMatchingWebsites("OR").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("OR snake OR").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("President jimmy OR ").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("or OR OROR").size());
+        assertEquals(1, queryHandlerObject.getMatchingWebsites("OR adam eve").size());
     }
 }
