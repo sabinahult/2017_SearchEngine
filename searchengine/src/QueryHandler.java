@@ -52,7 +52,7 @@ public class QueryHandler {
                 }
 
                 else {
-                //Compare values, and keep site with highest score
+                    //Compare values, and keep site with highest score
                     if(finalResult.get(site) < foundSites.get(site)) {
                         finalResult.put(site, foundSites.get(site));
                     }
@@ -72,7 +72,9 @@ public class QueryHandler {
      * @return a List<Website> that includes all the matching websites on one query
      */
     private Map<Website, Double> evaluateSubQuery(String[] words) {
+        Map<Website, Double> finalSitesRanked = new HashMap<>();
         Map<Website, Double> foundSitesRanked = new HashMap<>();
+        Score ranking = new TFScore();
 
         for(String word : words) {
             word = word.toLowerCase();
@@ -81,25 +83,48 @@ public class QueryHandler {
             //If a word is not found there's no need to search for the next word, skip the rest and return empty map
             if(tempList.isEmpty()) {
                 foundSitesRanked.clear();
-                break;
+                return new HashMap<>();
             }
 
-            //For each website in templist, getScore(word, website, index), and put Website and score into Map
-            for(Website site : tempList) {
-                Score ranking = new TFScore();
-
-                if(!foundSitesRanked.containsKey(site)) {
-                    //Add the website and score to map
+            //Rank and add all websites found during first loop
+            if(foundSitesRanked.isEmpty()) {
+                for(Website site : tempList) {
                     double score = ranking.getScore(word, site, index);
                     foundSitesRanked.put(site, score);
-                } else {
-                    //If the site is already in the map, we want to add up the scores for that website
-                    double newScore = foundSitesRanked.get(site) + ranking.getScore(word, site, index);
-                    foundSitesRanked.replace(site, newScore);
                 }
+            }
+
+            //All consecutive loops
+            else {
+                for(Website site : tempList) {
+                    //If the site that the second word is on, is not already in the map, return empty
+                    if(!foundSitesRanked.containsKey(site)) {
+                        foundSitesRanked.clear();
+                        return new HashMap<>();
+                    }
+
+                    //Update the score if the website has next word
+                    else {
+                        double newScore = foundSitesRanked.get(site) + ranking.getScore(word, site, index);
+                        foundSitesRanked.replace(site, newScore);
+                    }
+                }
+            }
+
+            //Adding result from each iteration to final result
+            //If final result is empty then add all (first iteration)
+            if(finalSitesRanked.isEmpty()) {
+                for(Website website : foundSitesRanked.keySet()) {
+                    finalSitesRanked.put(website, foundSitesRanked.get(website));
+                }
+            }
+
+            //If final result already contains websites, only keep those that are the same between iterations
+            else {
+                finalSitesRanked.entrySet().retainAll(foundSitesRanked.entrySet());
             }
         }
 
-        return foundSitesRanked;
+        return finalSitesRanked;
     }
 }
