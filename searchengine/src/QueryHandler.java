@@ -72,59 +72,42 @@ public class QueryHandler {
      * @return a List<Website> that includes all the matching websites on one query
      */
     private Map<Website, Double> evaluateSubQuery(String[] words) {
-        Map<Website, Double> finalSitesRanked = new HashMap<>();
-        Map<Website, Double> foundSitesRanked = new HashMap<>();
+        Map<Website, Double> finalSites = new HashMap<>();
         Score ranking = new TFScore();
 
         for(String word : words) {
             word = word.toLowerCase();
             List<Website> tempList = index.lookup(word);
+            Map<Website, Double> foundSites = new HashMap<>();
 
             //If a word is not found there's no need to search for the next word, skip the rest and return empty map
             if(tempList.isEmpty()) {
-                foundSitesRanked.clear();
                 return new HashMap<>();
             }
 
-            //Rank and add all websites found during first loop
-            if(foundSitesRanked.isEmpty()) {
-                for(Website site : tempList) {
-                    double score = ranking.getScore(word, site, index);
-                    foundSitesRanked.put(site, score);
+            //Rank and add all websites to found sites
+            for(Website site : tempList) {
+                double score = ranking.getScore(word, site, index);
+                foundSites.put(site, score);
+
+                //If website is already in final (because it's not the first iteration), then add up score
+                if(finalSites.containsKey(site)) {
+                    double newScore = finalSites.get(site) + ranking.getScore(word, site, index);
+                    finalSites.replace(site, newScore);
                 }
             }
 
-            //All consecutive loops
-            else {
-                for(Website site : tempList) {
-                    //If the site that the second word is on, is not already in the map, return empty
-                    if(!foundSitesRanked.containsKey(site)) {
-                        foundSitesRanked.clear();
-                        return new HashMap<>();
-                    }
-
-                    //Update the score if the website has next word
-                    else {
-                        double newScore = foundSitesRanked.get(site) + ranking.getScore(word, site, index);
-                        foundSitesRanked.replace(site, newScore);
-                    }
+            //Will only happen for the first found word...
+            if(finalSites.isEmpty()) {
+                for(Website siteKey : foundSites.keySet()) {
+                    finalSites.put(siteKey, foundSites.get(siteKey));
                 }
             }
 
-            //Adding result from each iteration to final result
-            //If final result is empty then add all (first iteration)
-            if(finalSitesRanked.isEmpty()) {
-                for(Website website : foundSitesRanked.keySet()) {
-                    finalSitesRanked.put(website, foundSitesRanked.get(website));
-                }
-            }
-
-            //If final result already contains websites, only keep those that are the same between iterations
-            else {
-                finalSitesRanked.entrySet().retainAll(foundSitesRanked.entrySet());
-            }
+            //Making sure we're only returning websites with all words present...
+            finalSites.keySet().retainAll(foundSites.keySet());
         }
 
-        return finalSitesRanked;
+        return finalSites;
     }
 }
