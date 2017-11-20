@@ -33,19 +33,23 @@ public class InvertedIndex implements Index {
 
                 //If the map contains the key already, check if the current website object is already in the list
                 // mapped to the key word. If not, then add it. If it is, do nothing.
-                else if(!websitesMap.get(word).contains(site)) {
-                        websitesMap.get(word).add(site);
-                    }
+                else if (!websitesMap.get(word).contains(site)) {
+                    websitesMap.get(word).add(site);
                 }
             }
         }
+    }
+
+    public double sizeOfIndex() {
+        return websitesMap.size();
+    }
 
     @Override
     public List<Website> lookup(String word) {
         if (websitesMap.containsKey(word)) {
             return websitesMap.get(word);
 
-        //To avoid nullPointerException we're returning an empty ArrayList
+            //To avoid nullPointerException we're returning an empty ArrayList
         } else {
             return new ArrayList<>();
         }

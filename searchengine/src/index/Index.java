@@ -22,4 +22,6 @@ import java.util.List;
      * found it returns an empty List.
      */
     List<Website> lookup(String word);
+
+    double sizeOfIndex();
 }
