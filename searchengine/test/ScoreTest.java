@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestTemplate;
 import ranking.IDFScore;
 import ranking.Score;
-import ranking.TDIDFScore;
+import ranking.TFIDFScore;
 import ranking.TFScore;
 
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ class ScoreTest {
 
         tfScore = new TFScore();
         idfScore = new IDFScore();
-        tfidfScore = new TDIDFScore();
+        tfidfScore = new TFIDFScore();
     }
 
     @AfterEach

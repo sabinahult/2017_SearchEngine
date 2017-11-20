@@ -12,11 +12,10 @@ public class IDFScore implements Score {
 
     @Override
     public double getScore(String word, Website site, Index index) {
-
         //a word occurs on n websites
         double numberOfWebsites = index.lookup(word).size();
 
-        //The whole database of wehsites
+        //The whole database of websites
         double sizeOfDatabase = index.sizeOfIndex();
 
         double calculation = sizeOfDatabase/numberOfWebsites;
