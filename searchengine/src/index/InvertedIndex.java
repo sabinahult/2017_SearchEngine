@@ -42,9 +42,6 @@ public class InvertedIndex implements Index {
         }
     }
 
-    public double sizeOfIndex() {
-        return websitesMap.size();
-    }
 
     @Override
     public List<Website> lookup(String word) {

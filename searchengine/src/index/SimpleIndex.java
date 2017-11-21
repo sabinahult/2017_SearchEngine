@@ -18,10 +18,6 @@ public class SimpleIndex implements Index {
 
     }
 
-    public double sizeOfIndex() {
-        return websites.size();
-    }
-
     @Override
     public List<Website> lookup(String word) {
         // Go through all websites and return a list of websites that contain the query word or empty if no matches

@@ -1,6 +1,8 @@
 import database.Website;
 import index.Index;
+import ranking.IDFScore;
 import ranking.Score;
+import ranking.TFIDFScore;
 import ranking.TFScore;
 
 import java.util.*;
@@ -73,7 +75,7 @@ public class QueryHandler {
      */
     private Map<Website, Double> evaluateSubQuery(String[] words) {
         Map<Website, Double> finalSites = new HashMap<>();
-        Score ranking = new TFScore();
+        Score ranking = new TFIDFScore();
 
         for(String word : words) {
             word = word.toLowerCase();
