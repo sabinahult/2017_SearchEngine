@@ -64,12 +64,10 @@ class ScoreTest {
     @Test
     void getScoreIDF() {
         assertEquals(0.8479969065549501, idfScore.getScore("queen", sites.get(0), index));
-
     }
 
     @Test
     void getScoreTFIDF() {
         assertEquals(1.6959938131099002, tfidfScore.getScore("queen", sites.get(6), index));
-
     }
 }
