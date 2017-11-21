@@ -10,6 +10,8 @@ import java.util.*;
 
 public class InvertedIndex implements Index {
     private Map<String, List<Website>> websitesMap;
+    //We need a list of webistes for the IDF score, to be able to calculate the ranking
+    private List<Website> aList;
 
     public InvertedIndex(Map<String, List<Website>> index) {
         websitesMap = index;
@@ -18,7 +20,7 @@ public class InvertedIndex implements Index {
     @Override
     public void build(List<Website> listOfWebsites) {
         //websitesMap = new HashMap<>(); // TreeMap or HashMap depending on wished implementation
-
+        aList = listOfWebsites;
         //Looking at each website in the data set
         for (Website site : listOfWebsites) {
 
@@ -58,5 +60,9 @@ public class InvertedIndex implements Index {
     @Override
     public String toString() {
         return "InvertedIndex{" + "websitesMap=" + websitesMap + '}';
+    }
+
+    public int getNumberOfWebsites() {
+        return aList.size();
     }
 }

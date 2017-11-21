@@ -38,4 +38,8 @@ public class SimpleIndex implements Index {
     public String toString() {
         return "SimpleIndex{" + "websites=" + websites + '}';
     }
+
+    public int getNumberOfWebsites(){
+        return websites.size();
+    }
 }

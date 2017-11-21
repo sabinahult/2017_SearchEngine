@@ -22,6 +22,11 @@ import java.util.List;
      * found it returns an empty List.
      */
     List<Website> lookup(String word);
-
     double sizeOfIndex();
+
+   /**
+    * To be able to calculate the IDF-score we need a List of Websites
+    * @return Returns a int of the size of the database
+    */
+   int getNumberOfWebsites();
 }

@@ -16,10 +16,8 @@ public class IDFScore implements Score {
         double numberOfWebsites = index.lookup(word).size();
 
         //The whole database of websites
-        double sizeOfDatabase = index.sizeOfIndex();
-
+        double sizeOfDatabase = index.getNumberOfWebsites();
         double calculation = sizeOfDatabase/numberOfWebsites;
-
         return logBase2(calculation);
     }
 

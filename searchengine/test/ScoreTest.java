@@ -58,18 +58,18 @@ class ScoreTest {
     @Test
     void getScoreTF() {
         assertEquals(0, tfScore.getScore("foo", sites.get(5), index));
-        assertEquals(1, tfScore.getScore("queen", sites.get(0), index));
         assertEquals(2, tfScore.getScore("president", sites.get(7), index));
-        assertEquals(3, tfScore.getScore("germany", sites.get(8), index));
     }
 
     @Test
     void getScoreIDF() {
+        assertEquals(0.8479969065549501, idfScore.getScore("queen", sites.get(0), index));
 
     }
 
     @Test
     void getScoreTFIDF() {
+        assertEquals(1.6959938131099002, tfidfScore.getScore("queen", sites.get(6), index));
 
     }
 }
