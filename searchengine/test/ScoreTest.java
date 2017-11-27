@@ -56,18 +56,17 @@ class ScoreTest {
     }
 
     @Test
-    void getScoreTF() {
+    void getScore() {
         assertEquals(0, tfScore.getScore("foo", sites.get(5), index));
         assertEquals(2, tfScore.getScore("president", sites.get(7), index));
-    }
-
-    @Test
-    void getScoreIDF() {
         assertEquals(0.8479969065549501, idfScore.getScore("queen", sites.get(0), index));
+        assertEquals(1.6959938131099002, tfidfScore.getScore("queen", sites.get(6), index));
     }
 
     @Test
-    void getScoreTFIDF() {
-        assertEquals(1.6959938131099002, tfidfScore.getScore("queen", sites.get(6), index));
+    void getScoreTFIDFCapitalLetters(){
+        assertTrue(Double.isNaN(tfidfScore.getScore("QUEEN", sites.get(1), index)));
+        assertEquals(0, tfScore.getScore("QUEEN", sites.get(1), index));
+        //assertThrows(ArithmeticException.class, idfScore.getScore("QUEEN", sites.get(1), index));
     }
 }

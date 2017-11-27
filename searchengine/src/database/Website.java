@@ -62,10 +62,6 @@ public class Website {
 
     @Override
     public String toString() {
-        return "database.Website{" +
-                "title='" + title + '\'' +
-                ", url='" + url + '\'' +
-                ", words=" + words +
-                '}';
+        return "Website{Title='" + title + '\'' +  '}';
     }
 }

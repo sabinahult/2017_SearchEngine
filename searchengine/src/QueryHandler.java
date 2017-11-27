@@ -52,14 +52,12 @@ public class QueryHandler {
                 if (!finalResult.containsKey(site)) {
                     finalResult.put(site, foundSites.get(site));
                 }
-
-                else {
-                    //Compare values, and keep site with highest score
-                    if(finalResult.get(site) < foundSites.get(site)) {
-                        finalResult.put(site, foundSites.get(site));
-                    }
+                //Compare values, and keep site with highest score
+                else if (finalResult.get(site) < foundSites.get(site)) {
+                    finalResult.put(site, foundSites.get(site));
                 }
         }
+
         return finalResult;
     }
 
