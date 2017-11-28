@@ -1,5 +1,6 @@
 # Ignore the .idea folder
-.idea/*
+*/.idea/*
+webapp/server/.idea/*
 
 
 # Created by https://www.gitignore.io/api/intellij,java
