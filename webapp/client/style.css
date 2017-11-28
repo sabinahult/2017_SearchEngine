@@ -1,15 +1,16 @@
 #urllist {
-    color: #969696;
-    border: 1px solid #dcdcdc;
+    text-decoration-color: hotpink;
+    margin: auto;
+    display: block;
     border-radius: 3px;
 }
 
 input[type="text"] {
-    padding: 10px;
+    padding: 5px;
     margin: 10px;
     border: solid 1px #dcdcdc;
-    border-radius: 4px;
-    min-width: 200px;
+    border-radius: 7px;
+    min-width: 400px;
     transition: box-shadow 0.3s, border 0.3s;
 }
 
@@ -17,4 +18,17 @@ input[type="text"]:focus,
 input[type="text"].focus {
     border: solid 1px #707070;
     box-shadow: 0 0 5px 1px #969696;
+}
+
+body{
+    background-image: url("baggrund.jpg");
+    background-size: cover;
+}
+
+button{
+    margin: auto;
+    display: block;
+    font-family: Candara;
+    width: 100px;
+    height: 25px;
 }

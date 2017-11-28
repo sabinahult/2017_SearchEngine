@@ -3,7 +3,6 @@ package searchengine;
 import searchengine.database.Website;
 import searchengine.index.Index;
 import searchengine.index.InvertedIndex;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import searchengine.ranking.IDFScore;
