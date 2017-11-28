@@ -1,7 +1,7 @@
-package ranking;
+package searchengine.ranking;
 
-import database.Website;
-import index.Index;
+import searchengine.database.Website;
+import searchengine.index.Index;
 
 /**
  * Authors: Group M: Sabina, Lisa, Line and Susan.

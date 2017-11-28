@@ -1,9 +1,11 @@
-import database.Website;
-import index.Index;
-import ranking.IDFScore;
-import ranking.Score;
-import ranking.TFIDFScore;
-import ranking.TFScore;
+package searchengine;
+
+import searchengine.database.Website;
+import searchengine.index.Index;
+import searchengine.ranking.IDFScore;
+import searchengine.ranking.Score;
+import searchengine.ranking.TFIDFScore;
+import searchengine.ranking.TFScore;
 
 import java.util.*;
 import java.util.stream.Collectors;
