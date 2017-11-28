@@ -1,3 +1,5 @@
+package searchengine;
+
 import searchengine.database.Website;
 import searchengine.index.Index;
 import searchengine.index.InvertedIndex;
@@ -41,19 +43,19 @@ class IndexTest {
 
     @Test
     void buildSimple() {
-        assertEquals("SimpleIndex{websites=[database.Website{title='example', url='zebra.com', words=[zebra]}, database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}, database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}]}", simpleIndex.toString());
+        assertEquals("SimpleIndex{websites=[Website{Title='example'}, Website{Title='urban housing'}, Website{Title='adam is at the zoo'}]}", simpleIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 
     @Test
     void buildTree() {
-        assertEquals("InvertedIndex{websitesMap={adam=[database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}], jens=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], man=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], urban=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], zebra=[database.Website{title='example', url='zebra.com', words=[zebra]}, database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}]}}", treeIndex.toString());
+        assertEquals("InvertedIndex{websitesMap={adam=[Website{Title='adam is at the zoo'}], jens=[Website{Title='urban housing'}], man=[Website{Title='urban housing'}], urban=[Website{Title='urban housing'}], zebra=[Website{Title='example'}, Website{Title='adam is at the zoo'}]}}", treeIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 
     @Test
     void buildHash(){
-        assertEquals("InvertedIndex{websitesMap={zebra=[database.Website{title='example', url='zebra.com', words=[zebra]}, database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}], jens=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], adam=[database.Website{title='adam is at the zoo', url='adamzoo.com', words=[adam, zebra]}], urban=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}], man=[database.Website{title='urban housing', url='example.com', words=[jens, man, urban, jens]}]}}", hashIndex.toString());
+        assertEquals("InvertedIndex{websitesMap={zebra=[Website{Title='example'}, Website{Title='adam is at the zoo'}], jens=[Website{Title='urban housing'}], adam=[Website{Title='adam is at the zoo'}], urban=[Website{Title='urban housing'}], man=[Website{Title='urban housing'}]}}", hashIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 

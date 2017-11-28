@@ -65,7 +65,7 @@ class ScoreTest {
     }
 
     @Test
-    void getScoreTFIDFCapitalLetters(){
+    void getScoreCapitalLetters(){
         assertTrue(Double.isNaN(tfidfScore.getScore("QUEEN", sites.get(1), index)));
         assertEquals(0, tfScore.getScore("QUEEN", sites.get(1), index));
         //assertThrows(ArithmeticException.class, idfScore.getScore("QUEEN", sites.get(1), index));
