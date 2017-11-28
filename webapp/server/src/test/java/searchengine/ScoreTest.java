@@ -52,10 +52,6 @@ class ScoreTest {
         tfidfScore = new TFIDFScore();
     }
 
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void getScore() {
         assertEquals(0, tfScore.getScore("foo", sites.get(5), index));
@@ -66,8 +62,8 @@ class ScoreTest {
 
     @Test
     void getScoreCapitalLetters(){
-        assertTrue(Double.isNaN(tfidfScore.getScore("QUEEN", sites.get(1), index)));
         assertEquals(0, tfScore.getScore("QUEEN", sites.get(1), index));
-        //assertThrows(ArithmeticException.class, idfScore.getScore("QUEEN", sites.get(1), index));
+        assertEquals(0, idfScore.getScore("QUEEN", sites.get(1), index));
+        assertEquals(0, tfidfScore.getScore("QUEEN", sites.get(1), index));
     }
 }

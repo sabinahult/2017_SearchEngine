@@ -1,3 +1,5 @@
+package searchengine;
+
 import searchengine.database.FileHelper;
 import searchengine.database.Website;
 import org.junit.jupiter.api.Test;
