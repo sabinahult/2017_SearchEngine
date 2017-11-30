@@ -10,7 +10,7 @@ $(document).ready(function() {
             data: {query: $('#searchbox').val()}
         }).success( function (data) { 
             console.log("Received response " + data);
-            $("#responsesize").html("<p>" + data.length + " websites retrieved</p>");
+            $("#responsesize").html("<p> We found " + data.length + " websites for you </p>");
             var buffer = "<ul>\n";
             $.each(data, function(index, value) { 
                 buffer += "<li><a href=\"" + value.url + "\">" + value.title + "</a></li>\n";

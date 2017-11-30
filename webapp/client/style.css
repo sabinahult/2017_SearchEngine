@@ -1,8 +1,28 @@
 #urllist {
-    text-decoration-color: hotpink;
-    margin: auto;
-    display: block;
     border-radius: 3px;
+    font-family: Candara;
+    font-size: 20px;
+    padding: 0 100px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a:link{
+    color: hotpink;
+    line-height: 40px;
+}
+
+a:visited{
+    color: rebeccapurple;
+}
+
+#responsesize{
+    padding: 0 100px;
+    font-family: Candara;
+    font-size: 20px;
+    color: rebeccapurple;
 }
 
 input[type="text"] {
