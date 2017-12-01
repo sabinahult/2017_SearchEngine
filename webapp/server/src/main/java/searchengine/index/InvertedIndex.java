@@ -60,4 +60,9 @@ public class InvertedIndex implements Index {
     public int getNumberOfWebsites() {
         return websites.size();
     }
+
+    @Override
+    public List<Website> getWebsites() {
+        return websites;
+    }
 }

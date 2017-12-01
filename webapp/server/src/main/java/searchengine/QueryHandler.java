@@ -2,10 +2,7 @@ package searchengine;
 
 import searchengine.database.Website;
 import searchengine.index.Index;
-import searchengine.ranking.IDFScore;
-import searchengine.ranking.Score;
-import searchengine.ranking.TFIDFScore;
-import searchengine.ranking.TFScore;
+import searchengine.ranking.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -74,7 +71,7 @@ public class QueryHandler {
      */
     private Map<Website, Double> evaluateSubQuery(String[] words) {
         Map<Website, Double> finalSites = new HashMap<>();
-        Score ranking = new TFIDFScore();
+        Score ranking = new BM25Score();
 
         for(String word : words) {
             word = word.toLowerCase();

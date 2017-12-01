@@ -3,7 +3,6 @@ package searchengine.ranking;
 import searchengine.database.Website;
 import searchengine.index.Index;
 
-import java.util.List;
 
 public class TFIDFScore implements Score {
 

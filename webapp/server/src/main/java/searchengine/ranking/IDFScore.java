@@ -1,12 +1,7 @@
 package searchengine.ranking;
 
-import searchengine.database.FileHelper;
 import searchengine.database.Website;
 import searchengine.index.Index;
-import searchengine.index.InvertedIndex;
-
-import java.io.File;
-import java.util.HashMap;
 
 public class IDFScore implements Score {
 

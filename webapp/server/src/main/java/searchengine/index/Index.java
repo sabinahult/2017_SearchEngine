@@ -28,4 +28,10 @@ import java.util.List;
     * @return Returns a int of the size of the database
     */
    int getNumberOfWebsites();
+
+    /**
+     * To be able to calulate the BM25 score, we to need to return the List of Websites.
+     * @return a List of Websites.
+     */
+   List<Website> getWebsites();
 }
