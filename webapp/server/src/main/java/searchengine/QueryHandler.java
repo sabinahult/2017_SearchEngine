@@ -71,7 +71,7 @@ public class QueryHandler {
      */
     private Map<Website, Double> evaluateSubQuery(String[] words) {
         Map<Website, Double> finalSites = new HashMap<>();
-        Score ranking = new BM25Score();
+        Score ranking = new BM25Score(index);
 
         for(String word : words) {
             word = word.toLowerCase();

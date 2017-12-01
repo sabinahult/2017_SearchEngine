@@ -7,6 +7,12 @@ import java.util.List;
 
 public class BM25Score implements Score {
 
+    private double avdl;
+
+    public BM25Score(Index index){
+        avdl = getAverageWordsInDatabase(index);
+    }
+
 
     @Override
     public double getScore(String word, Website site, Index index) {
@@ -15,7 +21,6 @@ public class BM25Score implements Score {
         double k= 1.75;
         double b = 0.75;
         int dl = getWordsOnWebsite(site);
-        double avdl = getAverageWordsInDatabase(index);
         double bm25score = (tfScore*(k+1))/(k*(1-b+b*dl/avdl)+tfScore);
         return bm25score;
     }
