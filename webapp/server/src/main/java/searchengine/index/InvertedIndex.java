@@ -20,20 +20,24 @@ public class InvertedIndex implements Index {
     @Override
     public void build(List<Website> listOfWebsites) {
         websites = listOfWebsites;
-        //Looking at each website in the data set
+        /* Looking at each website in the data set */
         for (Website site : listOfWebsites) {
 
-            //Looking at the word list for current website
+            /* Looking at the list of words for current website */
             for (String word : site.getWords()) {
 
-                //If the map does not contain the word as a key, then add the key and map to the current website
+                /* If the map does not contain the word as a key, then add the key and map
+                to the current website */
                 if (!websitesMap.containsKey(word)) {
                     websitesMap.put(word, new ArrayList<>());
                     websitesMap.get(word).add(site);
                 }
 
-                //If the map contains the key already, check if the current website object is already in the list
-                // mapped to the key word. If not, then add it. If it is, do nothing.
+                /*
+                If the map contains the key already, check if the current website object
+                is already in the list mapped to the key word. If not, then add it.
+                If it is, do nothing.
+                */
                 else if (!websitesMap.get(word).contains(site)) {
                     websitesMap.get(word).add(site);
                 }
@@ -52,11 +56,6 @@ public class InvertedIndex implements Index {
         }
     }
 
-    @Override
-    public String toString() {
-        return "InvertedIndex[" + "websitesMap=" + websitesMap + ']';
-    }
-
     public int getNumberOfWebsites() {
         return websites.size();
     }
@@ -64,5 +63,10 @@ public class InvertedIndex implements Index {
     @Override
     public List<Website> getWebsites() {
         return websites;
+    }
+
+    @Override
+    public String toString() {
+        return "InvertedIndex[" + "websitesMap=" + websitesMap + ']';
     }
 }

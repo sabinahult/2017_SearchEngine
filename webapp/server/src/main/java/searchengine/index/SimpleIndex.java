@@ -30,11 +30,6 @@ public class SimpleIndex implements Index {
         return relevantSites;
     }
 
-    @Override
-    public String toString() {
-        return "SimpleIndex{" + "websites=" + websites + '}';
-    }
-
     public int getNumberOfWebsites(){
         return websites.size();
     }
@@ -42,5 +37,10 @@ public class SimpleIndex implements Index {
     @Override
     public List<Website> getWebsites() {
         return websites;
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleIndex{" + "websites=" + websites + '}';
     }
 }

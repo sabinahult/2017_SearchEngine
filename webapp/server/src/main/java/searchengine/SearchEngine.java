@@ -94,23 +94,21 @@ public class SearchEngine extends ResourceConfig {
 
 
         if (query == null) {
-            return new ArrayList<Website>();
+            return new ArrayList<>();
         }
-
-        String line = query;
 
         System.out.println("Handling request for query word \"" + query + "\"");
 
         TinyTimer timer = new TinyTimer();
         timer.start();
 
-        List<Website> foundSites = queryHandler.getMatchingWebsites(line);
+        List<Website> foundSites = queryHandler.getMatchingWebsites(query);
 
         timer.end();
         timer.printDuration();
 
         if(foundSites.isEmpty()) {
-            System.out.println("No website contains " + line);
+            System.out.println("No website contains " + query);
         }
 
         System.out.println("Found " + foundSites.size() + " websites.");
