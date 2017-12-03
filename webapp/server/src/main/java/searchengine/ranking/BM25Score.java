@@ -6,19 +6,18 @@ import searchengine.index.Index;
 import java.util.List;
 
 public class BM25Score implements Score {
-    private double avdl;
+    private double averageOnAllSites;
 
     public BM25Score(Index index){
-        avdl = getAverageWordsInDatabase(index);
+        averageOnAllSites = getAverageWordsInDatabase(index);
     }
 
     @Override
     public double getScore(String word, Website site, Index index) {
-        TFScore tf = new TFScore();
-        double tfScore = tf.getScore(word, site, index);
-        double k= 1.75, b = 0.75;
-        int dl = site.getWords().size();
-        return (tfScore*(k+1))/(k*(1-b+b*dl/avdl)+tfScore);
+        IDFScore idfScore = new IDFScore();
+        double idfCalculation = idfScore.getScore(word, site, index);
+        double tfplus = calculateTFPlusScore(word, site, index);
+        return tfplus*idfCalculation;
     }
 
     /**
@@ -34,5 +33,13 @@ public class BM25Score implements Score {
             counter = counter + site.getWords().size();
         }
         return counter/sizeOfDatabase;
+    }
+
+    private double calculateTFPlusScore (String word, Website site, Index index){
+        TFScore tf = new TFScore();
+        double tfScore = tf.getScore(word, site, index);
+        double k= 1.75, b = 0.75;
+        int wordsOnWebsite = site.getWords().size();
+        return (tfScore*(k+1))/(k*(1-b+b*wordsOnWebsite/averageOnAllSites)+tfScore);
     }
 }

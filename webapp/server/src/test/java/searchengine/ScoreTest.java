@@ -5,10 +5,7 @@ import searchengine.index.Index;
 import searchengine.index.InvertedIndex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import searchengine.ranking.IDFScore;
-import searchengine.ranking.Score;
-import searchengine.ranking.TFIDFScore;
-import searchengine.ranking.TFScore;
+import searchengine.ranking.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +20,7 @@ class ScoreTest {
     private Score idfScore;
     private Score tfidfScore;
     private Index index;
+    private Score bm25Score;
 
     @BeforeEach
     void setUp() {
@@ -49,6 +47,7 @@ class ScoreTest {
         tfScore = new TFScore();
         idfScore = new IDFScore();
         tfidfScore = new TFIDFScore();
+        bm25Score = new BM25Score(index);
     }
 
     @Test
@@ -57,6 +56,7 @@ class ScoreTest {
         assertEquals(2, tfScore.getScore("president", sites.get(7), index));
         assertEquals(0.8479969065549501, idfScore.getScore("queen", sites.get(0), index));
         assertEquals(1.6959938131099002, tfidfScore.getScore("queen", sites.get(6), index));
+        assertEquals(1.7518660562103074, bm25Score.getScore("germany", sites.get(4), index));
     }
 
     @Test
@@ -64,5 +64,6 @@ class ScoreTest {
         assertEquals(0, tfScore.getScore("QUEEN", sites.get(1), index));
         assertEquals(0, idfScore.getScore("QUEEN", sites.get(1), index));
         assertEquals(0, tfidfScore.getScore("QUEEN", sites.get(1), index));
+        assertEquals(0, bm25Score.getScore("QUEEN", sites.get(1), index));
     }
 }
