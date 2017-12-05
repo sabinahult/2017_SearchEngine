@@ -30,6 +30,7 @@ public class SimpleIndex implements Index {
         return relevantSites;
     }
 
+    @Override
     public int getNumberOfWebsites(){
         return websites.size();
     }

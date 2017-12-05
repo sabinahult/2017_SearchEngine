@@ -49,13 +49,13 @@ class IndexTest {
 
     @Test
     void buildTree() {
-        assertEquals("InvertedIndex{websitesMap={adam=[Website{Title='adam is at the zoo'}], jens=[Website{Title='urban housing'}], man=[Website{Title='urban housing'}], urban=[Website{Title='urban housing'}], zebra=[Website{Title='example'}, Website{Title='adam is at the zoo'}]}}", treeIndex.toString());
+        assertEquals("InvertedIndex[websitesMap={adam=[Website{Title='adam is at the zoo'}], jens=[Website{Title='urban housing'}], man=[Website{Title='urban housing'}], urban=[Website{Title='urban housing'}], zebra=[Website{Title='example'}, Website{Title='adam is at the zoo'}]}]", treeIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 
     @Test
     void buildHash(){
-        assertEquals("InvertedIndex{websitesMap={zebra=[Website{Title='example'}, Website{Title='adam is at the zoo'}], jens=[Website{Title='urban housing'}], adam=[Website{Title='adam is at the zoo'}], urban=[Website{Title='urban housing'}], man=[Website{Title='urban housing'}]}}", hashIndex.toString());
+        assertEquals("InvertedIndex[websitesMap={zebra=[Website{Title='example'}, Website{Title='adam is at the zoo'}], jens=[Website{Title='urban housing'}], adam=[Website{Title='adam is at the zoo'}], urban=[Website{Title='urban housing'}], man=[Website{Title='urban housing'}]}]", hashIndex.toString());
         //make it fail - then you look at it manually and if it is correct you copy paste it in here.
     }
 
