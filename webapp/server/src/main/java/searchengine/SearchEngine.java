@@ -21,6 +21,8 @@ import searchengine.performance.TinyTimer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina
@@ -92,7 +94,6 @@ public class SearchEngine extends ResourceConfig {
         // to load code from a different location.
         response.setHeader("Access-Control-Allow-Origin", "*");
 
-
         if (query == null) {
             return new ArrayList<>();
         }
@@ -102,16 +103,26 @@ public class SearchEngine extends ResourceConfig {
         TinyTimer timer = new TinyTimer();
         timer.start();
 
-        List<Website> foundSites = queryHandler.getMatchingWebsites(query);
+        //To be able to print websites and scores on console, changed getMatching... to return map
+        Map<Website, Double> rankedSites = queryHandler.getMatchingWebsites(query);
 
         timer.end();
         timer.printDuration();
 
-        if(foundSites.isEmpty()) {
+        //Created method in Queryhandler to return list of websites sorted by value
+        List<Website> foundSitesSortedByScore = queryHandler.getMatchingWebsitesAsList(rankedSites);
+
+        if(rankedSites.isEmpty()) {
             System.out.println("No website contains " + query);
         }
 
-        System.out.println("Found " + foundSites.size() + " websites.");
-        return foundSites;
+        System.out.println("Found " + rankedSites.size() + " websites.");
+
+        //Printing out site title and score to console
+        for(Website site : foundSitesSortedByScore) {
+            System.out.println(site.getTitle() + " (Score: " + rankedSites.get(site) + ")");
+        }
+
+        return foundSitesSortedByScore;
     }
 }

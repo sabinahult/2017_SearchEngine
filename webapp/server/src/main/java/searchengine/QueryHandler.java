@@ -25,14 +25,13 @@ public class QueryHandler {
      * @param fullQuery search words passed by the SearchEngine
      * return A list of relevant websites
      */
-    public List<Website> getMatchingWebsites(String fullQuery) {
+    public Map<Website, Double> getMatchingWebsites(String fullQuery) {
         String[] subQuery = fullQuery.split("\\b\\s*OR\\s*\\b");
         Map<Website, Double> finalRankedResult = evaluateFullQuery(subQuery);
 
-        //Martins code for turning a Map into a List... :)
-        return finalRankedResult.entrySet().stream().sorted((x,y) ->
-                y.getValue(). compareTo(x.getValue())).map(Map.Entry::getKey).collect(Collectors.toList());
+        return finalRankedResult;
     }
+
 
     /**
      * For each of the sub-queries it splits them around a white space into an array of single words.
@@ -137,5 +136,16 @@ public class QueryHandler {
                 finalSites.replace(site, newScore);
             }
         }
+    }
+
+    /**
+     * Takes a map of website, double and returns a list of websites sorted by score
+     * @param rankedSites Websites mapped to a score
+     * @return a list of websites sorted by score
+     */
+    public List<Website> getMatchingWebsitesAsList(Map<Website, Double> rankedSites) {
+        //Martins code for turning a Map into a List... :)
+        return rankedSites.entrySet().stream().sorted((x,y) ->
+                y.getValue(). compareTo(x.getValue())).map(Map.Entry::getKey).collect(Collectors.toList());
     }
 }

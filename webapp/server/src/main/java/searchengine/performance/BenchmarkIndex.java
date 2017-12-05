@@ -5,7 +5,6 @@ import searchengine.database.Website;
 import searchengine.index.Index;
 import searchengine.index.InvertedIndex;
 import searchengine.index.SimpleIndex;
-import sun.reflect.generics.tree.Tree;
 
 import java.util.*;
 
