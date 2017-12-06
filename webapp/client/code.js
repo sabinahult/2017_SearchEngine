@@ -19,4 +19,10 @@ $(document).ready(function() {
             $("#urllist").html(buffer);
         });
     });
+
+    $(document).bind('keypress', function(e){
+        if(e.keyCode==13){
+            $('#searchbutton').trigger('click');
+        }
+    });
 });
