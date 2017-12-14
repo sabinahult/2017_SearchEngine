@@ -29,17 +29,21 @@ class ScoreTest {
         sites.add(new Website("example2.com", "Example 2", Arrays.asList("queen", "denmark")));
         sites.add(new Website("example3.com", "Example 3", Arrays.asList("president", "jimmy", "carter")));
         sites.add(new Website("example4.com", "Example 4", Arrays.asList("queen", "president", "jens")));
-        sites.add(new Website("example5.com", "Example 5", Arrays.asList("denmark", "president", "chancellor", "germany", "queen", "USA")));
+        sites.add(new Website("example5.com", "Example 5", Arrays.asList("denmark", "president", "chancellor",
+                "germany", "queen", "USA")));
         sites.add(new Website("example6.com", "Example 6", Arrays.asList("adam", "eve", "snake", "apple")));
 
         //Same word twice (queen, is on five sites in all)
-        sites.add(new Website("example7.com", "Example 7", Arrays.asList("queen", "denmark", "nytårstale", "skål", "queen")));
+        sites.add(new Website("example7.com", "Example 7", Arrays.asList("queen", "denmark", "nytårstale",
+                "skål", "queen")));
 
         //Same word twice (president, is on 4 sites in all)
-        sites.add(new Website("example8.com", "Example 8", Arrays.asList("USA", "president", "Trump", "no", "good", "president", "worst", "ever")));
+        sites.add(new Website("example8.com", "Example 8", Arrays.asList("USA", "president", "Trump", "no",
+                "good", "president", "worst", "ever")));
 
         //Same word three times (germany, is on 2 sites in all)
-        sites.add(new Website("example9.com", "Example 9", Arrays.asList("germany", "brandenburger", "tor", "chancellor", "germany", "Berlin", "punk", "germany", "is", "awesome")));
+        sites.add(new Website("example9.com", "Example 9", Arrays.asList("germany", "brandenburger", "tor",
+                "chancellor", "germany", "Berlin", "punk", "germany", "is", "awesome")));
 
         index = new InvertedIndex(new HashMap<>());
         index.build(sites);
@@ -60,7 +64,7 @@ class ScoreTest {
     }
 
     @Test
-    void getScoreCapitalLetters(){
+    void getScoreCapitalLetters() {
         assertEquals(0, tfScore.getScore("QUEEN", sites.get(1), index));
         assertEquals(0, idfScore.getScore("QUEEN", sites.get(1), index));
         assertEquals(0, tfidfScore.getScore("QUEEN", sites.get(1), index));
