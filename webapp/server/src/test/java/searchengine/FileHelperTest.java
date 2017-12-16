@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileHelperTest {
+class   FileHelperTest {
     @Test
     void parseGoodFile() {
         List<Website> sites = FileHelper.parseFile("test-resources/test-file.txt");

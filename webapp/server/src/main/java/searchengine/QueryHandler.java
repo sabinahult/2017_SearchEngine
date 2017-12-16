@@ -81,7 +81,7 @@ public class QueryHandler {
                 return new HashMap<>();
             }
 
-            //Rank found sites and add add to map (we are scoring sites we might not return...)
+            //Rank found sites and add it to map (we are scoring sites we might not return...)
             Map<Website, Double> foundSitesRanked = rankFoundSites(foundSitesList, ranking, word);
 
             //If website is already in the final map (because it's not the first iteration), then add up score for that website
