@@ -92,10 +92,9 @@ public class QueryHandler {
             } else {
                 //If website is already in the final map (because it's not the first iteration), then add up score for that website
                 addUpScore(finalSitesRanked, foundSitesList, word, ranking);
+                //Making sure we're only returning websites with all words present...
+                finalSitesRanked.keySet().retainAll(foundSitesRanked.keySet());
             }
-
-            //Making sure we're only returning websites with all words present...
-            finalSitesRanked.keySet().retainAll(foundSitesRanked.keySet());
         }
 
         return finalSitesRanked;

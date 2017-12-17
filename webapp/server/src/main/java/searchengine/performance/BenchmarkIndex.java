@@ -15,14 +15,14 @@ import java.util.*;
 public class BenchmarkIndex {
     public static void main(String[] args) {
 
-        //A little splash of color 03-12-17 SH
+        //A little splash of color
         final String PURPLE_UNDERLINED = "\033[4;35m";
         final String ANSI_RESET = "\u001B[0m";
 
         //Parsing our chosen data set into a list of websites
         List<Website> sitesMedium = FileHelper.parseFile("../../data/enwiki-medium.txt");
 
-        //Query words list with a word for each letter in the alphabet (26) 03-12-17 SH
+        //Query words list with a word for each letter in the alphabet (26 in all)
         List<String> queryWordsAlphabet = new ArrayList<>();
         queryWordsAlphabet.addAll(Arrays.asList("small", "colony", "urban", "victory", "weather", "hat", "years",
                 "zebra", "America", "table", "british", "dance", "even", "fire", "xavier", "goat",
@@ -37,7 +37,6 @@ public class BenchmarkIndex {
 
         System.out.println(PURPLE_UNDERLINED + "Benchmarking on InvertedIndex - HashMap:" + ANSI_RESET);
         benchmark(new InvertedIndex(new HashMap<>(8000)), queryWordsAlphabet, sitesMedium);
-
     }
 
     /**

@@ -5,6 +5,10 @@ import searchengine.index.Index;
 
 import java.util.List;
 
+/**
+ * Authors: Line & Lisa
+ */
+
 public class BM25Score implements Score {
     private double averageOnAllSites;
 
