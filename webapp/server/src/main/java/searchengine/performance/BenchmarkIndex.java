@@ -24,19 +24,19 @@ public class BenchmarkIndex {
 
         //Query words list with a word for each letter in the alphabet (26) 03-12-17 SH
         List<String> queryWordsAlphabet = new ArrayList<>();
-        queryWordsAlphabet.addAll(Arrays.asList("small", "table", "urban", "victory", "weather", "xavier", "years",
-                "zebra", "America", "british", "colony", "dance", "even", "fire", "goat", "hat",
-                "independent", "Japan", "king", "labour", "master", "nation", "over", "park", "queen", "rabbit"));
+        queryWordsAlphabet.addAll(Arrays.asList("small", "colony", "urban", "victory", "weather", "hat", "years",
+                "zebra", "America", "table", "british", "dance", "even", "fire", "xavier", "goat",
+                "independent", "Japan", "over", "king", "labour", "master", "park", "nation", "queen", "rabbit"));
 
         //Rebuilt a bit, so everything will be run at once instead of manually changing and choosing index type and data set
-        System.out.println(PURPLE_UNDERLINED + "Benchmarking on InvertedIndex - HashMap:" + ANSI_RESET);
-        benchmark(new InvertedIndex(new HashMap<>()), queryWordsAlphabet, sitesMedium);
+        System.out.println(PURPLE_UNDERLINED + "Benchmarking on SimpleIndex:" + ANSI_RESET);
+        benchmark(new SimpleIndex(), queryWordsAlphabet, sitesMedium);
 
         System.out.println(PURPLE_UNDERLINED + "Benchmarking on InvertedIndex - TreeMap:" + ANSI_RESET);
         benchmark(new InvertedIndex(new TreeMap<>()), queryWordsAlphabet, sitesMedium);
 
-        System.out.println(PURPLE_UNDERLINED + "Benchmarking on SimpleIndex:" + ANSI_RESET);
-        benchmark(new SimpleIndex(), queryWordsAlphabet, sitesMedium);
+        System.out.println(PURPLE_UNDERLINED + "Benchmarking on InvertedIndex - HashMap:" + ANSI_RESET);
+        benchmark(new InvertedIndex(new HashMap<>(8000)), queryWordsAlphabet, sitesMedium);
 
     }
 

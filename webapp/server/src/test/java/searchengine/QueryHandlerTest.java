@@ -70,12 +70,13 @@ class QueryHandlerTest {
         assertEquals(1, queryHandlerObject.getMatchingWebsites("or").size());
     }
 
-    //TODO Needs to be re-written after changed the getMatchingWebsites method to return a map instead of list
-/*    @Test
+    //To check that the queryhandler returns the websites ranked correctly - we create the ranked map and return it as a ranked list (as our map doesn't guarantee any specific order)
+    //We check that the title of the websites are correct at the index we expect them to be.
+    @Test
     void testRanking(){
-        assertEquals("Example 1", queryHandlerObject.getMatchingWebsites("queen").get(0).getTitle());
-        assertEquals("Example 2", queryHandlerObject.getMatchingWebsites("queen").get(1).getTitle());
-        assertEquals("Example 4", queryHandlerObject.getMatchingWebsites("queen").get(2).getTitle());
-        assertEquals("Example 5", queryHandlerObject.getMatchingWebsites("queen").get(3).getTitle());
-    }*/
+        assertEquals("Example 1", queryHandlerObject.getMatchingWebsitesAsList(queryHandlerObject.getMatchingWebsites("queen")).get(0).getTitle());
+        assertEquals("Example 2", queryHandlerObject.getMatchingWebsitesAsList(queryHandlerObject.getMatchingWebsites("queen")).get(1).getTitle());
+        assertEquals("Example 4", queryHandlerObject.getMatchingWebsitesAsList(queryHandlerObject.getMatchingWebsites("queen")).get(2).getTitle());
+        assertEquals("Example 5", queryHandlerObject.getMatchingWebsitesAsList(queryHandlerObject.getMatchingWebsites("queen")).get(3).getTitle());
+    }
 }
