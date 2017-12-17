@@ -81,17 +81,17 @@ public class QueryHandler {
                 return new HashMap<>();
             }
 
-            //Rank found sites and add it to map (we are scoring sites we might not return...)
+            //Rank found sites and add it to map (we are scoring sites we might not return though...)
             Map<Website, Double> foundSitesRanked = rankFoundSites(foundSitesList, ranking, word);
-
-            //If website is already in the final map (because it's not the first iteration), then add up score for that website
-            addUpScore(finalSitesRanked, foundSitesList, word, ranking);
 
             //For the first word, put the websites in the final map
             if(finalSitesRanked.isEmpty()) {
                 for(Website siteKey : foundSitesRanked.keySet()) {
                     finalSitesRanked.put(siteKey, foundSitesRanked.get(siteKey));
                 }
+            } else {
+                //If website is already in the final map (because it's not the first iteration), then add up score for that website
+                addUpScore(finalSitesRanked, foundSitesList, word, ranking);
             }
 
             //Making sure we're only returning websites with all words present...
