@@ -23,7 +23,7 @@ public class QueryHandler {
      * Takes a string of words (full query), and splits them around OR into sub-queries, then passes that as an
      * array to evaluateFullQuery and returns the result of that method.
      * @param fullQuery search words passed by the SearchEngine
-     * return A list of relevant websites
+     * return A Map of relevant websites(key) and ranking(value)
      */
     public Map<Website, Double> getMatchingWebsites(String fullQuery) {
         String[] subQuery = fullQuery.split("\\b\\s*OR\\s*\\b");
@@ -37,7 +37,7 @@ public class QueryHandler {
      * For each of the sub-queries it splits them around a white space into an array of single words.
      * When all words in a sub-query has been looked up, it finally adds all the found websites to final result.
      * @param subQuery Array of strings passed by getMatchingWebsites
-     * @return a List<Website> to getMatchingWebsites
+     * @return a Map<Website, Ranking> to getMatchingWebsites
      */
     private Map<Website, Double> evaluateFullQuery(String[] subQuery) {
         Map<Website, Double> finalResult = new HashMap<>();
@@ -66,7 +66,7 @@ public class QueryHandler {
      * has elements (from a previous iteration) it keeps only those elements that are the same between the two collections,
      * because we only want to return websites that contains all words in the given sub-query.
      * @param words Array of words received from evaluateFullQuery
-     * @return a List<Website> that includes all the matching websites on one query
+     * @return a Map<Website, Ranking> that includes all the matching websites on one query
      */
     private Map<Website, Double> evaluateSubQuery(String[] words) {
         Map<Website, Double> finalSitesRanked = new HashMap<>();
