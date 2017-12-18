@@ -26,7 +26,7 @@ public class QueryHandler {
      * return A Map of relevant websites(key) and ranking(value)
      */
     public Map<Website, Double> getMatchingWebsites(String fullQuery) {
-        String[] subQuery = fullQuery.split("\\b\\s*OR\\s*\\b");
+        String[] subQuery = fullQuery.trim().split("\\b\\s*OR\\s*\\b");
         Map<Website, Double> finalRankedResult = evaluateFullQuery(subQuery);
 
         return finalRankedResult;

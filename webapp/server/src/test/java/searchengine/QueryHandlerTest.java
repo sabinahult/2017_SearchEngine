@@ -68,6 +68,7 @@ class QueryHandlerTest {
         assertEquals(1, queryHandlerObject.getMatchingWebsites("OR adam eve").size());
         assertEquals(0, queryHandlerObject.getMatchingWebsites("adam KVOR eve").size());
         assertEquals(1, queryHandlerObject.getMatchingWebsites("or").size());
+        assertEquals(4, queryHandlerObject.getMatchingWebsites("  president  OR  adam   ").size());
     }
 
     //To check that the queryhandler returns the websites ranked correctly - we create the ranked map and return it as a ranked list (as our map doesn't guarantee any specific order)
