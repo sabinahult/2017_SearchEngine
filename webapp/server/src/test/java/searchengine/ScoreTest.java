@@ -14,6 +14,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Authors: Group M: Line, Lisa, Susan and Sabina
+ */
+
 class ScoreTest {
     private List<Website> sites;
     private Score tfScore;

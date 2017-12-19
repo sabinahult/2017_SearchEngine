@@ -8,6 +8,10 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Authors: Group M: Line, Lisa, Susan and Sabina
+ */
+
 class WebsiteTest {
     private static Website site1;
     private static Website site2;

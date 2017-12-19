@@ -3,6 +3,9 @@ package searchengine.ranking;
 import searchengine.database.Website;
 import searchengine.index.Index;
 
+/**
+ * Authors: Group M: Line, Lisa, Susan and Sabina
+ */
 
 public class TFIDFScore implements Score {
 

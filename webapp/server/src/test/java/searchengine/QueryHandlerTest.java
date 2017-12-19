@@ -14,9 +14,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Authors: Group M: Line, Lisa, Susan and Sabina
+ */
+
 class QueryHandlerTest {
     private QueryHandler queryHandlerObject;
-    private Index index;
 
     @BeforeEach
     void setUp() {
@@ -28,7 +31,7 @@ class QueryHandlerTest {
         sites.add(new Website("example5.com", "Example 5", Arrays.asList("denmark", "president", "chancellor", "germany", "queen", "USA")));
         sites.add(new Website("example6.com", "Example 6", Arrays.asList("adam", "eve", "snake", "apple")));
 
-        index = new InvertedIndex(new HashMap<>());
+        Index index = new InvertedIndex(new HashMap<>());
         index.build(sites);
         queryHandlerObject = new QueryHandler(index);
     }
@@ -71,8 +74,9 @@ class QueryHandlerTest {
         assertEquals(4, queryHandlerObject.getMatchingWebsites("  president  OR  adam   ").size());
     }
 
-    //To check that the queryhandler returns the websites ranked correctly - we create the ranked map and return it as a ranked list (as our map doesn't guarantee any specific order)
-    //We check that the title of the websites are correct at the index we expect them to be.
+    /*To check that the QueryHandler returns the websites in correct order we create the ranked map and return
+    it as a sorted list (as our map doesn't guarantee any specific order). We check that the title of the
+    websites are at the index we expect them to be.*/
     @Test
     void testRanking(){
         assertEquals("Example 1", queryHandlerObject.getMatchingWebsitesAsList(queryHandlerObject.getMatchingWebsites("queen")).get(0).getTitle());

@@ -7,6 +7,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Authors: Group M: Line, Lisa, Susan and Sabina
+ */
+
 class   FileHelperTest {
     @Test
     void parseGoodFile() {

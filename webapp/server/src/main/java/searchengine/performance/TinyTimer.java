@@ -8,11 +8,11 @@ package searchengine.performance;
 
 public class TinyTimer {
     private long startTime;
-    long endTime;
+    private long endTime;
 
-    //A splash of color while we wait for some real GUI :)
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_RESET = "\u001B[0m";
+    //A splash of color :)
+    private static final String ANSI_PURPLE = "\u001B[35m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
     /**
      * Timestamp in nanoseconds

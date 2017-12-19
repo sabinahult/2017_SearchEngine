@@ -12,6 +12,7 @@ import java.util.*;
  * Authors: Group M: Line, Lisa, Susan and Sabina
  * The overall function of the benchmarking class is to benchmark query times with different index implementations.
  */
+
 public class BenchmarkIndex {
     public static void main(String[] args) {
 
@@ -60,7 +61,7 @@ public class BenchmarkIndex {
         result = makingQueries(1, queryWords, index);
         tinyTimer.end();
 
-        System.out.println("Running queries: " + tinyTimer.duration() + " nanoseconds.");
+        tinyTimer.printDuration();
         System.out.println("Websites found: " + result + "\n");
     }
 

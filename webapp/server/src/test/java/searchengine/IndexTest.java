@@ -12,6 +12,10 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Author: Authors: Group M: Line, Lisa, Susan and Sabina
+ */
+
 class IndexTest {
     Index simpleIndex = null;
     Index treeIndex = null;
