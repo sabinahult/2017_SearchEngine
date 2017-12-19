@@ -15,8 +15,9 @@ public class IDFScore implements Score {
         //a word occurs on n websites
         double websitesWithWord = index.lookup(word).size();
 
-        //to avoid errors when dividing by 0. To make it return something useful.
-        if(websitesWithWord == 0){ return 0;}
+        //if the word isn't on any websites, there's no need to go on with the calculations
+        if(websitesWithWord == 0) {
+            return 0;}
 
         //The number of websites in the database
         double sizeOfDatabase = index.getNumberOfWebsites();
@@ -27,7 +28,7 @@ public class IDFScore implements Score {
         return logBase2(calculation);
     }
 
-    private double logBase2 (double calculation){
+    private double logBase2 (double calculation) {
         return Math.log(calculation)/Math.log(2);
     }
 }

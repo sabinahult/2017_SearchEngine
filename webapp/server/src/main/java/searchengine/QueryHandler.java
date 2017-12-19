@@ -143,7 +143,7 @@ public class QueryHandler {
      * @return a list of websites sorted by score
      */
     public List<Website> getMatchingWebsitesAsList(Map<Website, Double> rankedSites) {
-        //Martins code for turning a Map into a List... :)
+        //Martins code for returning a list of websites sorted by score in descending order :)
         return rankedSites.entrySet().stream().sorted((x,y) ->
                 y.getValue(). compareTo(x.getValue())).map(Map.Entry::getKey).collect(Collectors.toList());
     }

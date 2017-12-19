@@ -31,7 +31,7 @@ public class BM25Score implements Score {
 
     /**
      * Takes the index and calculates the average number of words over all websites in the index (AVDL)
-     * @param index
+     * @param index the websites database
      * @return a double, the average.
      */
     private double getAverageWordsInDatabase(Index index) {
@@ -48,9 +48,9 @@ public class BM25Score implements Score {
 
     /**
      *Calculates tf*(word, website, database) = tf(word, website) * ((k+1)/(k*(1-b+b*DL/AVDL)+tf(word, website)))
-     * @param word
-     * @param site
-     * @param index
+     * @param word the query word
+     * @param site the current site being scored
+     * @param index the website database
      * @return a double, the result.
      */
 
@@ -58,10 +58,10 @@ public class BM25Score implements Score {
         TFScore tf = new TFScore();
         double tfScore = tf.getScore(word, site, index);
 
-        //k and b are constants in the formula.
+        //k and b are constants in the formula
         double k = 1.75, b = 0.75;
 
-        //How many words are there on the specific site that are being ranked
+        //How many words are there on the specific site that is being ranked
         int wordsOnWebsite = site.getWords().size();
 
         //Return the result

@@ -15,12 +15,11 @@ public class SimpleIndex implements Index {
     @Override
     public void build(List<Website> listOfWebsites) {
         websites = listOfWebsites;
-
     }
 
     @Override
     public List<Website> lookup(String word) {
-        // Go through all websites and return a list of websites that contain the query word or empty if no matches
+        // Go through all websites and return a list of websites that contains the query word or empty if no matches
         ArrayList<Website> relevantSites = new ArrayList<>();
         for (Website w : websites) {
             if (w.containsWord(word)) {

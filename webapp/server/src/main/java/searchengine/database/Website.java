@@ -19,7 +19,6 @@ public class Website {
      * @param title The title of the website
      * @param words The list of words contained on the website
      */
-
     public Website(String url, String title, List<String> words) {
         this.url = url;
         this.title = title;
@@ -55,7 +54,6 @@ public class Website {
      * @param word The query word
      * @return True if the word is present within the words-list of the website
      */
-
     public Boolean containsWord(String word) {
         return words.contains(word);
     }

@@ -32,7 +32,7 @@ public class FileHelper {
                 String line = sc.nextLine();
                 if (line.startsWith("*PAGE:")) {
 
-                    //If all variables already has a value (because this is not the first iteration),
+                    //If all variables already have a value (because this is not the first iteration),
                     //then create website from data gathered in previous iteration
                     if (isEntryValid(url, title, listOfWords)) {
                         sites.add(new Website(url, title, listOfWords));

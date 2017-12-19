@@ -5,6 +5,8 @@ import searchengine.index.Index;
 
 /**
  * Authors: Group M: Sabina, Lisa, Line and Susan.
+ * Overall function of a score class is to calculate a score for a given website according to a given
+ * search word.
  */
 
 public interface Score {

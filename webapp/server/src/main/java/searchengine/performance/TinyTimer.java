@@ -2,7 +2,7 @@ package searchengine.performance;
 
 /**
  * Authors: Group M: Line, Lisa, Susan and Sabina.
- * This class sole purpose is to time running time on methods, mostly for the Benchmarking class,
+ * This class sole purpose is to time running time on methods, mostly for the BenchmarkIndex class,
  * but also for printing out query time when querying the search engine.
  */
 

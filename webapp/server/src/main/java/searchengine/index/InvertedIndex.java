@@ -67,7 +67,6 @@ public class InvertedIndex implements Index {
     }
 
     @Override
-    //To test the Inverted index
     public String toString() {
         return "InvertedIndex[" + "websitesMap=" + websitesMap + ']';
     }
