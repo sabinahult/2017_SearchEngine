@@ -11,7 +11,7 @@ import java.util.List;
  public interface Index {
 
     /**
-     * Takes a list of websites, that is used to create a data structure to search through.
+     * Takes a list of websites, that can then be used as a basis for creating a data structure.
      * @param listOfWebsites a List of website objects
      */
     void build(List<Website> listOfWebsites);
@@ -27,14 +27,14 @@ import java.util.List;
 
 
     /**
-    * To calculate the IDF-score we need to know the number of Websites
+    * Calculates the total number of websites in the database. (IDF)
     * @return Returns a int of the size of the database
     */
    int getNumberOfWebsites();
 
 
    /**
-     * To be able to calculate the BM25 score, we to need get the List of Websites.
+     * Returns a list of all the website in the database. (BM25)
      * @return a List of Websites.
      */
    List<Website> getWebsites();

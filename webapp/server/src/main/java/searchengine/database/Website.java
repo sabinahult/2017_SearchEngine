@@ -13,12 +13,6 @@ public class Website {
     private String url;
     private List<String> words;
 
-    /**
-     * Constructor for a website object.
-     * @param url A string formatted as an url starting with https//:
-     * @param title The title of the website
-     * @param words The list of words contained on the website
-     */
     public Website(String url, String title, List<String> words) {
         this.url = url;
         this.title = title;
@@ -26,7 +20,7 @@ public class Website {
     }
 
     /**
-     * Returns the title of this website
+     * Returns the title of the website
      * @return title
      */
     public String getTitle() {
@@ -34,7 +28,7 @@ public class Website {
     }
 
     /**
-     * Returns the url of this website
+     * Returns the url of the website
      * @return url
      */
     public String getUrl() {
@@ -42,7 +36,7 @@ public class Website {
     }
 
     /**
-     * Returns the list of words for this website
+     * Returns the list of words for the website
      * @return listOfWords
      */
     public List<String> getWords() {

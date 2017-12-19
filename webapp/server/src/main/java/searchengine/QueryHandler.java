@@ -20,8 +20,8 @@ public class QueryHandler {
     }
 
     /**
-     * Takes a string of words (full query), and splits them around OR into sub-queries, then passes that as an
-     * array to evaluateFullQuery and returns the result of that method.
+     * Takes a string of words (full query), and splits them around “OR” into subqueries.
+     * It passes the subqueries as a collection to evaluateFullQuery and returns the result of that method.
      * @param fullQuery search words passed by the SearchEngine
      * return A Map of relevant websites(key) and ranking(value)
      */
@@ -34,8 +34,9 @@ public class QueryHandler {
 
 
     /**
-     * For each of the sub-queries it splits them around a white space into an array of single words.
-     * When all words in a sub-query has been looked up, it finally adds all the found websites to final result.
+     * Splits the subqueries around white space into a collection of words. When all words in one
+     * subquery have been looked up, it checks if the website/websites are already in the collection of found websites,
+     * if it is not it adds them.
      * @param subQuery Array of strings passed by getMatchingWebsites
      * @return a Map<Website, Ranking> to getMatchingWebsites
      */
@@ -59,12 +60,14 @@ public class QueryHandler {
     }
 
     /**
-     * Takes an Array of strings and for each string calls the lookup method of the index, which returns a list of
-     * websites that contains the word. If no matching websites an empty list is returned.
+     * Takes an collection of words and for each word calls the lookup method of the index,
+     * which returns a list of websites that contains the word.
      *
-     * If the word is found and the foundSites variable is empty, it adds all sites to foundSites. If foundSites already
-     * has elements (from a previous iteration) it keeps only those elements that are the same between the two collections,
-     * because we only want to return websites that contains all words in the given sub-query.
+     * If no matching websites are found the method returns an empty collection.
+     * If the word is found and the collection to return is empty, it adds all sites to that collection.
+     * If the collection to return already has elements (from a previous iteration) it keeps only those elements
+     * that are the same between the two collections because we only want to return websites
+     * that contains all words in the given subquery.
      * @param words Array of words received from evaluateFullQuery
      * @return a Map<Website, Ranking> that includes all the matching websites on one query
      */
