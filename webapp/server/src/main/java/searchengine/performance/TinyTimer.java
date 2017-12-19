@@ -32,7 +32,7 @@ public class TinyTimer {
      * Subtracts startTime from endTime
      * @return the difference between startTime and endTime
      */
-    public long duration() {
+    private long duration() {
         return (endTime - startTime);
     }
 

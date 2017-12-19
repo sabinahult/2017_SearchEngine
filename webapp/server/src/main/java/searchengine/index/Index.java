@@ -27,14 +27,14 @@ import java.util.List;
 
 
     /**
-    * Calculates the total number of websites in the database. (IDF)
+    * Calculates the total number of websites in the database
     * @return Returns a int of the size of the database
     */
    int getNumberOfWebsites();
 
 
    /**
-     * Returns a list of all the website in the database. (BM25)
+     * Returns a list of all the website in the database
      * @return a List of Websites.
      */
    List<Website> getWebsites();
